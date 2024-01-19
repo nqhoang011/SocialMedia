@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
@@ -16,7 +16,7 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
+  // display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -35,4 +35,17 @@
   to {
     transform: rotate(360deg);
   }
+}
+.nav {
+  --bs-nav-link-padding-x: 1rem;
+  --bs-nav-link-padding-y: 0.5rem;
+  --bs-nav-link-font-weight: ;
+  --bs-nav-link-color: var(--bs-link-color);
+  --bs-nav-link-hover-color: var(--bs-link-hover-color);
+  --bs-nav-link-disabled-color: #6c757d;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
 }
