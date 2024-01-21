@@ -9,6 +9,8 @@ const SignUp = () => {
             </div>
             <div className="container-form">
                 <form>
+                    <h1>Sign Up</h1>
+                    <p>Please sign in to continue.</p>
                     <div className="inputBox">
                         <input type="fullName"
                             name="fullName"
@@ -23,7 +25,7 @@ const SignUp = () => {
                             // onChange={handleChange}
                             placeholder="Email" />
                     </div>
-                    <div className="password">
+                    <div className="inputBox">
                         <input type="password"
                             name="password"
                             id="password"
@@ -39,7 +41,7 @@ const SignUp = () => {
                     </div>
                     <div className="divBtn">
                         {/* <small className="forgotPassword">Forgot Password?</small> */}
-                        <button type="submit" className="loginBtn">SIGN UP</button>
+                        <button type="submit" className="loginBtn">SignUp</button>
                     </div>
                 </form>
                 <div className="dont">

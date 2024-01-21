@@ -11,7 +11,7 @@ const Login = () => {
             </div>
             <div className="container-form">
                 <form /*onSubmit={handleLogin}*/>
-                    <h1>Log in</h1>
+                    <h1>Log In</h1>
                     <p>Please sign in to continue.</p>
                     <div className="inputBox">
                         <input type="email"
@@ -31,7 +31,7 @@ const Login = () => {
 
                     <div className="divBtn">
                         <small className="forgotPassword">Forgot Password?</small>
-                        <button type="submit" className="loginBtn">Login</button>
+                        <button type="submit" className="loginBtn">LogIn</button>
                     </div>
                 </form>
                 <div className="dont">
