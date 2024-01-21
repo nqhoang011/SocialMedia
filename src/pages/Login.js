@@ -6,6 +6,10 @@ import "../pages/Login.css";
 const Login = () => {
     return (
         <div className="container">
+            <div className="img-container">
+
+                <img className="logo" src="http://localhost:3000/img/icon-bg1.png"></img>
+            </div>
             <div className="container-form">
                 <form /*onSubmit={handleLogin}*/>
                     <h1>Log in</h1>
@@ -27,11 +31,11 @@ const Login = () => {
                     </div>
 
                     <div className="divBtn">
-                        <small className="forgotPassword">Forgot Password?</small>
                         <button type="submit" className="loginBtn">Login</button>
                     </div>
                 </form>
                 <div className="dont">
+                    <small className="forgotPassword">Forgot Password?</small>
                     <p>Don't have an account? Sign up</p>
                 </div>
             </div>
