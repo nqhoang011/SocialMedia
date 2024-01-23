@@ -8,7 +8,7 @@ const Login = () => {
     return (
         <div className="container">
             <div className="img-container">
-                <img className="logo" src={iconBg1}></img>
+                <img className="icon-bg" src={iconBg1}></img>
             </div>
             <div className="container-form">
                 <form /*onSubmit={handleLogin}*/>
