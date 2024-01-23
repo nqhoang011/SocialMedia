@@ -1,11 +1,11 @@
 import React from "react";
 import "../pages/Login.css";
-
+import iconBg1 from "../img/icon-bg1.png"
 const SignUp = () => {
     return (
         <div className="container">
             <div className="img-container">
-                <img className="logo" src="http://localhost:3000/img/icon-bg1.png"></img>
+                <img className="logo" src={iconBg1}></img>
             </div>
             <div className="container-form">
                 <form>
