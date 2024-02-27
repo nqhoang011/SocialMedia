@@ -1,20 +1,19 @@
 import logo from './logo.svg';
 import './App.scss';
-import './Example/TestComponent';
-import TestComponent from './Example/TestComponent';
-import NavigationBar from '../components/navigationBar/navigationBar';
-import Login from '../pages/Login';
-import SignUp from '../pages/SignUp';
+import NavigationBar from '../components/navigationBar/NavBar';
+import Login from '../pages/Login/Login';
+import SignUp from '../pages/Login/SignUp';
+import HomePage from '../pages/HomePage/HomePage';
+import { Route, Router, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <NavigationBar /> */}
-        {/* <Login /> */}
-        <SignUp />
-        {/* <TestComponent /> */}
-      </header>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/home' element={<HomePage />} />
+      </Routes>
     </div >
   );
 }

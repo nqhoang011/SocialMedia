@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import SignUp from './SignUp';
-import "../pages/Login.css";
-import iconBg1 from "../img/icon-bg1.png"
+import "../Login/Login.css";
+import iconBg1 from "../../img/icon-bg1.png";
 
 const Login = () => {
+
+    const [data, setData] = useState({
+        email: '',
+        password: ''
+    })
+
     return (
         <div className="container">
             <div className="img-container">
@@ -36,7 +42,7 @@ const Login = () => {
                 </form>
                 <div className="dont">
                     <small className="forgotPassword">Forgot Password?</small>
-                    <p>Don't have any account? Sign up</p>
+                    <p>Don't have any account? <Link to="/signup"><span>Sign up</span></Link></p>
                 </div>
             </div>
         </div>

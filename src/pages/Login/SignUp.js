@@ -1,6 +1,7 @@
 import React from "react";
-import "../pages/Login.css";
-import iconBg1 from "../img/icon-bg1.png"
+import "../Login/Login.css";
+import iconBg1 from "../../img/icon-bg1.png"
+import { Link } from 'react-router-dom';
 const SignUp = () => {
     return (
         <div className="container">
@@ -45,7 +46,7 @@ const SignUp = () => {
                     </div>
                 </form>
                 <div className="dont">
-                    <p>Already have an accout? Sign in</p>
+                    <p>Already have an accout? <Link to='/'><span></span>Log In</Link></p>
                 </div>
             </div>
         </div>
