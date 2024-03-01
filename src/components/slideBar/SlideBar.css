@@ -1,5 +1,5 @@
 .slide-bar {
-    background-color: orangered;
+    background: linear-gradient(135deg, #6a0728, #662a38, #4d3275);
     height: 460px;
     padding:10px 10px 150px 10px;
     margin: 20px 0px;
@@ -32,7 +32,7 @@
 }
 #btn.active{
     font-weight: 500;
-    background: linear-gradient(107deg, rgb(255, 67, 5) 11.1%, rgb(245, 135, 0) 95.3%);
+    background: linear-gradient(107deg, rgb(136, 63, 97) 11.1%, rgb(255, 191, 163) 95.3%);
     color: #fff;
 }
 .info {

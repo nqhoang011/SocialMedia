@@ -1,6 +1,6 @@
 import React from 'react';
 import '../createPost/CreatePost.css';
-import { CloseRounded, EmojiEmotionsOutlined, Face, Face2, Face3, Face4, Face5, Face6, KeyboardVoiceOutlined, PhotoLibraryOutlined, PlayCircleFilled, PlayCircleFilledOutlined, PlayCircleOutline, VoiceChatOutlined } from '@mui/icons-material';
+import { CloseRounded, EmojiEmotionsOutlined, Face, Face2, Face3, Face4, Face5, Face6, KeyboardVoiceOutlined, PhotoLibraryOutlined, PlayCircleFilled, PlayCircleFilledOutlined, PlayCircleOutline, SentimentSatisfiedOutlined, VoiceChatOutlined } from '@mui/icons-material';
 
 const CreatePost = ({ images, setImages }) => {
     return (
@@ -25,11 +25,7 @@ const CreatePost = ({ images, setImages }) => {
                             <span className='photo-dis'>Video</span>
                         </div>
                         <div className='pv-upload'>
-                            <KeyboardVoiceOutlined className='input-svg' />
-                            <span className='photo-dis'>Audio</span>
-                        </div>
-                        <div className='pv-upload'>
-                            <EmojiEmotionsOutlined className='input-svg' />
+                            <SentimentSatisfiedOutlined className='input-svg' />
                             <span className='photo-dis'>Feeings/Activity</span>
                         </div>
                     </div>

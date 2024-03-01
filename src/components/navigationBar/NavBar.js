@@ -3,12 +3,14 @@ import '../navigationBar/NavBar.css';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { ChildFriendlyOutlined, Home, Message, MessageOutlined, MessageRounded, MessageSharp, MessageTwoTone, NotificationsOutlined, People, PeopleAltOutlined } from '@mui/icons-material';
+import IconNavBar from '../../img/logo-1.png';
 
 const NavBar = () => {
     return (
         <nav>
             <div>
                 <Link to="/home" className='logo'>
+                    <img className='img-navbar' src={IconNavBar} />
                     <h1><span>ZNET</span></h1>
                 </Link>
             </div>
