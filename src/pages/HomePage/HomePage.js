@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from '../../components/navigationBar/NavBar';
 import SlideBar from '../../components/slideBar/SlideBar';
 import CreatePost from '../../components/createPost/CreatePost';
+import Post from '../../components/listPosts/Post';
 import '../HomePage/HomePage.css';
 
 const HomePage = () => {
@@ -10,7 +11,10 @@ const HomePage = () => {
             <NavBar />
             <div className='home'>
                 <SlideBar />
-                <CreatePost />
+                <div>
+                    <CreatePost />
+                    <Post />
+                </div>
             </div>
 
         </div>

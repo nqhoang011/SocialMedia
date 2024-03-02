@@ -1,105 +1,157 @@
-import { SentimentDissatisfied } from '@mui/icons-material';
-import React from 'react';
+// import { BlockOutlined, SentimentDissatisfied, VolumeMuteOutlined } from '@mui/icons-material';
+// import React, { useState } from 'react';
+// import Profile from '../../img/bg1.jpg';
+// import '../listPost/Post.css';
+// import { Button } from '@mui/material';
 
-const Post = ({ post, posts, setPosts, setFriendsProfile, images }) => {
-    const [comments, setComments] = useState([
-        {
-            id: 1,
-            profilePic: img1,
-            likes: 23,
-            username: "Violet",
-            time: "3 Hours Ago",
-            comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse asperiores debitis saepe itaque, eligendi quasi laboriosam vitae voluptatem animi maiores voluptatibus."
-        },
-        {
-            id: 2,
-            profilePic: img2,
-            likes: 5,
-            username: "Brandon",
-            time: "1 Hour Ago",
-            comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        },
-        {
-            id: 3,
-            profilePic: img3,
-            likes: 50,
-            username: "Lilly",
-            time: "30 Mins Ago",
-            comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse asperiores debitis saepe itaque, eligendi quasi"
-        }
-    ])
-    const [like, setLike] = useState(post.like)
-    const [unlike, setUnlike] = useState(false)
+// const Post = () => {
+//     const [showDelete, setShowDelete] = useState(false);
+//     return (
+//         <div className='post'>
+//             <div className='post-header'>
+//                 <Link to="/friendId" style={{ textDecoration: "none" }}>
+//                     <div className='post-user' style={{ cursor: "pointer" }}>
+//                         <img src={Profile} className='p-img' alt="" />
+//                         <h2>Hau</h2>
+//                         <p className='datePara'>2 hours ago</p>
+//                     </div>
+//                 </Link>
+//                 <div className='delete'>
+//                     {showDelete && (
+//                         <div className='option'>
+//                             <button><SentimentDissatisfied />Not interested in this post</button>
+//                             <button><VolumeMuteOutlined />Mute this user</button>
+//                             <button><BlockOutlined />Block this user</button>
+//                             <button><Report</button>
+//                         </div>
+//                     )}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
 
-    const [filledLike, setFilledLike] = useState(<FavoriteBorderOutlinedIcon />)
-    const [unFilledLike, setUnFilledLike] = useState(false)
+// export default Post;
+import Profile from '../../img/bg1.jpg';
+import React from "react";
+import styles from "./Post.module.css";
+import { ChatBubbleOutline, FavoriteBorderOutlined, InsertEmoticonOutlined, ModeCommentOutlined, MoreHoriz, MoreVert, Save, SaveAltOutlined, SendOutlined } from '@mui/icons-material';
 
-    const handlelikes = () => {
-        setLike(unlike ? like - 1 : like + 1)
-        setUnlike(!unlike)
-
-        setFilledLike(unFilledLike ? <FavoriteBorderOutlinedIcon /> : <FavoriteRoundedIcon />)
-        setUnFilledLike(!unFilledLike)
-    }
-    const [showDelete, setShowDelete] = useState(false)
-    const [showComment, setShowComment] = useState(false)
-
-    const handleDelete = (id) => {
-        const deleteFilter = posts.filter(val => val.id !== id)
-        setPosts(deleteFilter)
-        setShowDelete(false)
-    }
-
-    const [commentInput, setCommentInput] = useState("")
-
-    const handleCommentInput = (e) => {
-        e.preventDefault()
-
-        const id = comments.length ? comments[comments.length - 1].id + 1 : 1
-        const profilePic = Profile
-        const username = "Vijay"
-        const comment = commentInput
-        const time = moment.utc(new Date(), 'yyyy/MM/dd kk:mm:ss').local().startOf('seconds').fromNow()
-
-        const commentObj = {
-            id: id,
-            profilePic: profilePic,
-            likes: 0,
-            username: username,
-            comment: comment,
-            time: time
-        }
-        const insert = [...comments, commentObj]
-        setComments(insert)
-        setCommentInput("")
-    }
-
-    const handleFriendsId = (id) => {
-        const friendsIdFilter = posts.filter(val => val.id === id)
-        setFriendsProfile(friendsIdFilter)
-    }
-
-    const [socialIcons, setSocialIcons] = useState(false)
+const Post = () => {
     return (
-        <div className='post'>
-            <div className='post-header'>
-                <Link to="/friendId" style={{ textDecoration: "none" }}>
-                    <div className='post-user' onClick={() => handleFriendsId(post.id)} style={{ cursor: "pointer" }}>
-                        <img src={post.profilepicture} className='p-img' alt="" />
-                        <h2>{post.username}</h2>
-                        <p className='datePara'>{post.datetime}</p>
-                    </div>
-                </Link>
-                <div className='delete'>
-                    {showDelete && (
-                        <div className='option'>
-                            <button><SentimentDissatisfied /></button>
+        <div className={styles.post}>
+            <div className={styles.header}>
+                <div className={styles.headerWrapper}>
+                    <div className={styles.header1}>
+                        <img
+                            className={styles.avatarCircleIcon}
+                            alt=""
+                            src={Profile}
+                        />
+                        <div className={styles.userName}>
+                            <div className={styles.userName1}>
+                                <div className={styles.terrylucas}>
+                                    VTV24
+                                </div>
+                            </div>
                         </div>
-                    )}
+                        <div className={styles.moreOptions}>
+                            <div className={styles.icon}>
+                                <button style={{ cursor: "pointer" }}><MoreHoriz /></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.postImg}>
+                <div className={styles.div} />
+                <img className={styles.icon1} alt="" src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/428682762_722357756766765_8872614249068926625_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=3635dc&_nc_eui2=AeEYxFnn5ZxikWbqmV9OzVSL0QAWtzDgQXbRABa3MOBBdpvl6uT2RbVUhbUHfo6wkoHcpAvfW5oJjxcbZ51Fi0vs&_nc_ohc=2Zboj9ofL6gAX9ft0qK&_nc_ht=scontent.fsgn5-8.fna&oh=00_AfCMPwEdmXgLdEhnvyJhI1pacm-eKLE9Zo6stBk69_KqtA&oe=65E6F675" />
+            </div>
+            <div className={styles.footer}>
+                <div className={styles.border}>
+                    <div className={styles.border1} />
+                </div>
+                <div className={styles.icons}>
+                    <div className={styles.iconLeft}>
+                        <div className={styles.con}>
+                            <FavoriteBorderOutlined className={styles.iconsmore} />
+                        </div>
+                        <div className={styles.con1}>
+                            <ChatBubbleOutline className={styles.iconsmore} />
+                        </div>
+                        <div className={styles.con2}>
+                            <SendOutlined className={styles.iconsmore} />
+                        </div>
+                    </div>
+                    {/* <div className={styles.iconRight}>
+                        <div className={styles.con3}>
+                            <SaveAltOutlined className={styles.iconsmore} />
+                        </div>
+                    </div> */}
+                </div>
+                <div className={styles.likes}>
+                    <div className={styles.terrylucas}>1.069</div>
+                    <div className={styles.likes1}> Likes</div>
+                </div>
+                <div className={styles.time}>
+                    <div className={styles.time1}>
+                        <div className={styles.hourAgo}>1 hour ago</div>
+                    </div>
+                </div>
+                <div className={styles.addcomment}>
+                    <div className={styles.border2}>
+                        <div className={styles.border3} />
+                    </div>
+                    <div className={styles.addcomment1}>
+                        <div className={styles.iconParent}>
+                            <div className={styles.icon2}>
+                                <InsertEmoticonOutlined className={styles.iconsmore} />
+                            </div>
+                            <div className={styles.add}>
+                                <input className={styles.addAComment}
+                                    placeholder='Add a comment...' />
+                            </div>
+                            <div className={styles.postBtn}>
+                                <button className={styles.post1}>post</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.border4}>
+                        <div className={styles.border3} />
+                    </div>
+                </div>
+                <div className={styles.border6}>
+                    <div className={styles.border1} />
+                </div>
+                <div className={styles.comment}>
+                    <div className={styles.userComment}>
+                        <div className={styles.frameParent}>
+                            <div className={styles.userNameParent}>
+                                <div className={styles.userName2}>
+                                    <div className={styles.terrylucas1}>{`terrylucas `}</div>
+                                </div>
+                                <div className={styles.userComment1}>
+                                    <div className={styles.imperdietInSit}>
+                                        Imperdiet in sit rhoncus, eleifend tellus augue lectus
+                                        potenti pellentesque
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.moreBtn}>
+                                <button className={styles.imperdietInSit}>
+                                    <span>...</span>
+                                    <span className={styles.more1}>more</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.commentHeader}>
+                        <button><div className={styles.addAComment}>View all 100 comments</div></button>
+                    </div>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Post;
+export default Post
