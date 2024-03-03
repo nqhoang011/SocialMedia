@@ -1,10 +1,8 @@
 .list-border {
-    background: linear-gradient(135deg, #6a0728, #662a38, #4d3275);
     height: 260px;
-    width: 370px;
+    width: 390px;
     padding:10px 10px 150px 10px;
     margin: 20px 0px;
-    border-radius: 20px;
     position: sticky;
     top: 110px;
     z-index: 1;
