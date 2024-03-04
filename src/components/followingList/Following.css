@@ -1,14 +1,22 @@
-.list-border {
+.right-side {
+    height: 460px;
+    padding:10px 10px 150px 10px;
+    margin: 20px 0px;
+    border-radius: 20px;
+    position: sticky;
+    top: 130px;
+}
+.following-suggest {
     height: 260px;
     width: 390px;
     padding:10px 10px 150px 10px;
     margin: 20px 0px;
-    position: sticky;
+    box-sizing: border-box;
     top: 110px;
     z-index: 1;
 }
 
-.list-border::after{
+.following-suggest::after{
     content: "";
     display: block;
     height: 260px;
@@ -63,4 +71,6 @@
 .btn button:hover {
     border: 2px solid orangered;
     background-color: transparent;
+}
+.following-list {
 }

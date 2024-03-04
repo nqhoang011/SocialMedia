@@ -4,8 +4,7 @@ import SlideBar from '../../components/slideBar/SlideBar';
 import CreatePost from '../../components/createPost/CreatePost';
 import Post from '../../components/listPosts/Post';
 import '../HomePage/HomePage.css';
-import FollowingList from '../../components/followingList/FollowingList';
-import FollowingSuggest from '../../components/followingList/FollowingSuggest';
+import Following from '../../components/followingList/Following';
 
 const HomePage = () => {
     return (
@@ -18,10 +17,7 @@ const HomePage = () => {
                     <Post />
                 </div>
 
-                <div className='right-side'>
-                    <FollowingSuggest />
-                    <FollowingList />
-                </div>
+                <Following />
 
             </div>
 
