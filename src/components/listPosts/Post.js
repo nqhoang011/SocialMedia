@@ -57,7 +57,7 @@ const Post = () => {
                         </div>
                         <div className={styles.moreOptions}>
                             <div className={styles.icon}>
-                                <button style={{ cursor: "pointer" }}><MoreHoriz /></button>
+                                <i style={{ cursor: "pointer" }}><MoreHoriz /></i>
                             </div>
                         </div>
                     </div>
@@ -138,15 +138,15 @@ const Post = () => {
                                 </div>
                             </div>
                             <div className={styles.moreBtn}>
-                                <button className={styles.imperdietInSit}>
+                                <i className={styles.imperdietInSit}>
                                     <span>...</span>
                                     <span className={styles.more1}>more</span>
-                                </button>
+                                </i>
                             </div>
                         </div>
                     </div>
                     <div className={styles.commentHeader}>
-                        <button><div className={styles.addAComment}>View all 100 comments</div></button>
+                        <i><div className={styles.addAComment}>View all 100 comments</div></i>
                     </div>
                 </div>
             </div>
