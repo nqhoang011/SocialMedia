@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../slideBar/SlideBar.css';
 
-const SlideBar = () => {
-    const [btnActive, setBtnActive] = useState(0);
+const SlideBar = ({ active = 0 }) => {
+    const [btnActive, setBtnActive] = useState(active);
     return (
         <div className='slide-bar'>
             <Link to='/home' className='slidebar-buttons'>
@@ -26,20 +26,20 @@ const SlideBar = () => {
                 </div>
             </Link>
             <Link to='/create' className='slidebar-buttons'>
-                <div id='btn' onClick={() => setBtnActive(2)} className={btnActive === 2 ? "active" : ""}>
+                <div id='btn' onClick={() => setBtnActive(3)} className={btnActive === 3 ? "active" : ""}>
                     <Settings className='slidebar-icons' />
                     <span>Setting</span>
                 </div>
             </Link>
             <Link to='/setting' className='slidebar-buttons'>
-                <div id='btn' onClick={() => setBtnActive(3)} className={btnActive === 3 ? "active" : ""}>
+                <div id='btn' onClick={() => setBtnActive(4)} className={btnActive === 4 ? "active" : ""}>
                     <Settings className='slidebar-icons' />
                     <span>Setting</span>
                 </div>
             </Link>
             <div className='info'>
                 <Link to='/profile' className='slidebar-buttons'>
-                    <div id='btn' onClick={() => setBtnActive(3)} className={btnActive === 3 ? "active" : ""}>
+                    <div id='btn' onClick={() => setBtnActive(5)} className={btnActive === 5 ? "active" : ""}>
                         <div className='profile-info'>
                             <img className='profile-image' />
                             <h1><b>Hoang</b></h1>

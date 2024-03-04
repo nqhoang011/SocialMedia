@@ -5,6 +5,7 @@
     border-radius: 20px;
     position: sticky;
     top: 130px;
+
 }
 .following-suggest {
     height: 260px;
@@ -14,6 +15,7 @@
     box-sizing: border-box;
     top: 110px;
     z-index: 1;
+    border-bottom: 1px solid white;
 }
 
 .following-suggest::after{
@@ -39,7 +41,7 @@
     width: fit-content;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     justify-content: flex-start;
 }
 .info span {
