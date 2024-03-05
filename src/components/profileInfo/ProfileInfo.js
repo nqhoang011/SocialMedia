@@ -1,16 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ProfileInfo.module.css";
-import { Avatar } from "@mui/material";
+import { Avatar, Button, Modal } from "@mui/material";
 import bg1 from "../../img/bg1.jpg";
-import { AddCircle, ExpandRounded, GridOnOutlined, VideoLibrary } from "@mui/icons-material";
+import { AddCircle, Close, GridOnOutlined, SaveAltOutlined, VideoLibrary } from "@mui/icons-material";
 
-const imageDisplay = () => {
+const ImageDisplay = () => {
     return (
-        <img src={bg1} className={styles.postImage} />
+        <img src={bg1} alt="" className={styles.postImage} />
+    );
+}
+
+const EditForm = ({ open, setOpen }) => {
+    return (
+        <Modal className={styles.modal}
+            open={open}
+            onClose={() => setOpen(false)}
+        >
+            <div className={styles.formBorder}>
+                <div className={styles.titleForm}>
+                    <h2>Edit Profile</h2>
+                    <Close onClick={() => setOpen(false)} />
+                </div>
+                <form className={styles.editForm}>
+                    <input
+                        className={styles.formInput}
+                        type="text"
+                        // value={ }
+                        placeholder="Enter Your Name"
+                        required />
+                    <input
+                        className={styles.formInput}
+                        type="text"
+                        // value={ }
+                        placeholder="Enter Username"
+                        required />
+                    <div className={styles.btnSave}>
+                        <Button variant="contained">Save</Button>
+                    </div>
+                </form>
+            </div>
+        </Modal>
     );
 }
 
 const ProfileInfo = () => {
+    const [open, setOpen] = useState(false);
     return (
         <div className={styles.userProfilebody}>
             <div className={styles.header}>
@@ -24,7 +58,13 @@ const ProfileInfo = () => {
                 <div className={styles.desc}>
                     <div className={styles.account}>
                         <div className={styles.terrylucas}>Min_Lytro</div>
-                        <button className={styles.follow}>Edit Profile</button>
+                        <button
+                            className={styles.follow}
+                            onClick={() => setOpen(true)}>Edit Profile</button>
+                        <EditForm
+                            open={open}
+                            setOpen={setOpen}
+                        />
                     </div>
                     <div className={styles.tag}>
                         <div className={styles.posts}>99 posts</div>
@@ -38,7 +78,12 @@ const ProfileInfo = () => {
             </div>
             <div className={styles.storys}>
                 <div className={styles.story}>
-                    <AddCircle className={styles.avatarProfilePicIcon} />
+                    <AddCircle
+                        className={styles.avatarProfilePicIcon}
+                        sx={{
+                            width: "77px",
+                            height: "77px"
+                        }} />
                     <div className={styles.avatarName}>
                         <div className={styles.madeUsWrapper}>
                             <div className={styles.madeUs}>New</div>
@@ -79,10 +124,14 @@ const ProfileInfo = () => {
                 </div>
             </div>
             <div className={styles.userPosts}>
-                <img src={bg1} className={styles.postImage} />
-                <img src={bg1} className={styles.postImage} />
-                <img src={bg1} className={styles.postImage} />
-                <img src={bg1} className={styles.postImage} />
+                <ImageDisplay />
+                <ImageDisplay />
+                <ImageDisplay />
+                <ImageDisplay />
+                <ImageDisplay />
+                <ImageDisplay />
+                <ImageDisplay />
+                <ImageDisplay />
             </div>
         </div>
     );

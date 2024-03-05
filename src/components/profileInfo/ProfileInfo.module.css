@@ -8,7 +8,7 @@
     color: var(--white);
     font-family: var(--font-segoe-ui);
     position: relative;
-    top: 40px
+    top: 40px;
   }
   .profilePic {
     width: 150px;
@@ -189,13 +189,6 @@
   line-height: 16px;
   font-weight: 600;
 }
-/* .story1 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: var(--padding-2xs) var(--padding-4xl);
-} */
 .madeUs2 {
   position: absolute;
   top: 0;
@@ -242,11 +235,6 @@
   text-align: center;
   font-size: var(--font-size-sm);
 }
-/* .story3 {
-  flex-direction: column;
-  padding: var(--padding-2xs) var(--padding-4xl);
-  color: var(--black);
-} */
 .border,
 .border3 {
   position: absolute;
@@ -363,26 +351,62 @@
 }
 .userPosts {
   position: absolute;
-  top: 963px;
   left: 0;
   width: 963px;
   height: 293px;
-
-}
-.userPosts {
-  top: 321px;
   top: 494px;
   height: 1898px;
   align-items: center;
   justify-content: center;
+  margin: 20px;
 }
 .postImage {
   width: 210px;
   height: 210px;
-  border-radius: 20px;
   margin: 5px;
 }
 .grid {
   width: 200px;
   height: 200px;
+}
+.modal {
+  width: 500px;
+  height: 250px;
+  display: flex;
+  top: 20%;
+  left: 40%;
+}
+.formBorder {
+  width: 500px;
+  height: 265px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  align-items: center;
+  border-radius: 20px;
+}
+.titleForm {
+  margin: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.editForm {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+.formInput {
+  width: 400px;
+  height: 50px;
+  margin: 5px;
+  border-radius: 15px;
+  font-size: 20px;
+}
+.btnSave {
+  display: flex;
+  justify-content: right;
+  margin: 10px;
 }
