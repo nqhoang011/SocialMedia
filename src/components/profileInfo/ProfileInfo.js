@@ -57,9 +57,9 @@ const ProfileInfo = () => {
                 </div>
                 <div className={styles.desc}>
                     <div className={styles.account}>
-                        <div className={styles.terrylucas}>Min_Lytro</div>
+                        <div className={styles.nickName}>Min_Lytro</div>
                         <button
-                            className={styles.follow}
+                            className={styles.editProfile}
                             onClick={() => setOpen(true)}>Edit Profile</button>
                         <EditForm
                             open={open}
@@ -67,12 +67,15 @@ const ProfileInfo = () => {
                         />
                     </div>
                     <div className={styles.tag}>
-                        <div className={styles.posts}>99 posts</div>
-                        <div className={styles.posts}>9M followers</div>
-                        <div className={styles.posts}>9 following</div>
+                        <div className={styles.viewer}>99 </div>
+                        <div className={styles.posts}>posts</div>
+                        <div className={styles.viewer}>9M </div>
+                        <div className={styles.posts}>followers</div>
+                        <div className={styles.viewer}>9 </div>
+                        <div className={styles.posts}>following</div>
                     </div>
                     <div className={styles.profileName1}>
-                        <div className={styles.terryLucas}>Minh Bui</div>
+                        <div className={styles.viewer}>Minh Bui</div>
                     </div>
                 </div>
             </div>

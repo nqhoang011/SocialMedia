@@ -5,7 +5,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import Messenger from '../pages/Messenger/Messenger';
 import { Route, Router, Routes } from 'react-router-dom';
 import Profile from '../pages/Profile/Profile';
-import Reels from '../pages/Reels/Reels';
+import ListReels from '../pages/Reels Container/ListReels';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path='/home' element={<HomePage />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/messenger' element={<Messenger />} />
-        <Route path='/reels' element={<Reels />} />
+        <Route path='/reels' element={<ListReels />} />
       </Routes>
     </div >
   );

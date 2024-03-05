@@ -1,20 +1,18 @@
 import React from "react";
-import styles from '../listReels/ListReels.module.css';
-import Reels from '../../img/bg1.jpg';
+import styles from '../Reels/Reels.module.css';
+import Video from '../../img/bg1.jpg';
 import { FavoriteBorder, ChatBubbleOutline, Send } from '@mui/icons-material';
-
-
-const ListReels = () => {
+const Reels = () => {
     return (
         <div className={styles.reels}>
             <img
                 className={styles.storypictureIcon}
                 alt=""
-                src={Reels}
+                src={Video}
             />
             <div className={styles.postContent}>
                 <div className={styles.nameBar}>
-                    <img className={styles.avatarIcon} alt="" src={Reels} />
+                    <img className={styles.avatarIcon} alt="" src={Video} />
                     <b className={styles.pageName}>Page name</b>
                 </div>
                 <div className={styles.description}>
@@ -40,11 +38,11 @@ const ListReels = () => {
                 <div className={styles.iconShare}>
                     <Send className={styles.heartIcon} />
                 </div>
-                <img className={styles.iconAudio} alt="" src={Reels} />
+                <img className={styles.iconAudio} alt="" src={Video} />
                 <div className={styles.actionIconsBottom} />
             </div>
         </div>
     );
 };
 
-export default ListReels;
+export default Reels;
