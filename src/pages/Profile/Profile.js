@@ -9,8 +9,13 @@ const Profile = () => {
         <div className='interface'>
             <NavBar />
             <div className='profile'>
-                <SlideBar active={5} />
-                <ProfileInfo />
+                <div>
+                    <SlideBar active={5} />
+                </div>
+                <div className='profile-border'>
+                    <ProfileInfo />
+                </div>
+
             </div>
         </div>
     );

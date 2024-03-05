@@ -17,3 +17,7 @@
     padding: 0px 10px;
     position: relative;
 }
+.profile-border {
+    display: flex;
+    align-items: center;
+}
