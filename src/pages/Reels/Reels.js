@@ -11,6 +11,8 @@ const Reels = () => {
             <div className='reels'>
                 <SlideBar />
                 <ListReels />
+                <ListReels />
+                <ListReels />
             </div>
         </div>
     );

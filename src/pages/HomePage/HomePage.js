@@ -15,6 +15,8 @@ const HomePage = () => {
                 <div>
                     <CreatePost />
                     <Post />
+                    <Post />
+                    <Post />
                 </div>
 
                 <Following />

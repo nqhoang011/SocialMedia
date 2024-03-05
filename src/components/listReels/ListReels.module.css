@@ -1,138 +1,152 @@
 .storypictureIcon {
-    position: absolute;
-    top: 40px;
-    left: 650px;
-    border-radius: 10px;
-    width: 353.6px;
-    height: 625.7px;
-    object-fit: cover;
-  }
-  .avatarIcon {
-    width: 30px;
-    border-radius: 20px;
-    position: relative;
-    height: 30px;
-    overflow: hidden;
-    flex-shrink: 0;
-    object-fit: cover;
-  }
-  .pageName {
-    position: relative;
-    line-height: 22px;
-  }
-  .nameBar {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: var(--padding-5xs) var(--padding-41xl) var(--padding-5xs)
-      var(--padding-base);
-    gap: 0 12px;
-  }
-  .more {
-    color: rgba(255, 255, 255, 0.6);
-  }
-  .loremIpsumDolorContainer {
-    flex: 1;
-    position: relative;
-    letter-spacing: 0.5px;
-    line-height: 120%;
-  }
-  .description {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: var(--padding-5xs) var(--padding-41xl) var(--padding-5xs)
-      var(--padding-base);
-  }
-  .icon {
-    width: 10.7px;
-    position: relative;
-    height: 14px;
-  }
-  .audioBar,
-  .postContent {
-    display: flex;
-    justify-content: flex-start;
-  }
-  .audioBar {
-    align-self: stretch;
-    flex-direction: row;
-    align-items: center;
-    padding: var(--padding-5xs) var(--padding-base);
-    gap: 0 12px;
-  }
-  .postContent {
-    position: absolute;
-    width: calc(100% - 1050px);
-    right: 530px;
-    bottom: 136px;
-    left: 520px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .div,
-  .heartIcon {
-    position: relative;
-  }
-  .heartIcon {
-    width: 23.6px;
-    height: 21px;
-  }
-  .div {
-    line-height: 22px;
-    font-weight: 600;
-  }
-  .iconHeart {
-    position: absolute;
-    top: 683px;
-    left: 896px;
-    width: 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .commentIcon {
-    width: 21px;
-    position: relative;
-    height: 21px;
-  }
-  .iconComment,
-  .iconShare {
-    position: absolute;
-    top: 742px;
-    left: 896px;
-    width: 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .iconShare {
-    top: 801px;
-    height: 28px;
-  }
-  .iconAudio {
-    position: absolute;
-    top: 845px;
-    left: 898px;
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-  }
-  .actionIconsBottom {
-    position: absolute;
-    top: 298px;
-    left: -114px;
-    width: 28px;
-    height: 594px;
-  }
-  .reels {
-    text-align: left;
-    color: white;
-  }
-  
+  position     : absolute;
+  top          : 40px;
+  left         : 650px;
+  border-radius: 10px;
+  width        : 353.6px;
+  height       : 625.7px;
+  object-fit   : cover;
+}
+
+.avatarIcon {
+  width        : 30px;
+  border-radius: 20px;
+  position     : relative;
+  height       : 30px;
+  overflow     : hidden;
+  flex-shrink  : 0;
+  object-fit   : cover;
+}
+
+.pageName {
+  position   : relative;
+  line-height: 22px;
+}
+
+.nameBar {
+  align-self     : stretch;
+  display        : flex;
+  flex-direction : row;
+  align-items    : center;
+  justify-content: flex-start;
+  gap            : 0 12px;
+}
+
+.more {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.loremIpsumDolorContainer {
+  flex          : 1;
+  position      : relative;
+  letter-spacing: 0.5px;
+  line-height   : 120%;
+}
+
+.description {
+  align-self     : stretch;
+  display        : flex;
+  flex-direction : row;
+  align-items    : flex-start;
+  justify-content: flex-start;
+}
+
+.icon {
+  width   : 10.7px;
+  position: relative;
+  height  : 14px;
+}
+
+.audioBar,
+.postContent {
+  display        : flex;
+  justify-content: flex-start;
+}
+
+.audioBar {
+  align-self    : stretch;
+  flex-direction: row;
+  align-items   : center;
+  gap           : 0 12px;
+}
+
+.postContent {
+  position      : absolute;
+  width         : calc(100% - 1050px);
+  right         : 530px;
+  bottom        : 136px;
+  left          : 520px;
+  flex-direction: column;
+  align-items   : flex-start;
+}
+
+.div,
+.heartIcon {
+  position: relative;
+}
+
+.heartIcon {
+  width : 23.6px;
+  height: 21px;
+}
+
+.div {
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.iconHeart {
+  position       : absolute;
+  top            : 683px;
+  left           : 896px;
+  width          : 28px;
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+}
+
+.commentIcon {
+  width   : 21px;
+  position: relative;
+  height  : 21px;
+}
+
+.iconComment,
+.iconShare {
+  position       : absolute;
+  top            : 742px;
+  left           : 896px;
+  width          : 28px;
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+}
+
+.iconShare {
+  top   : 801px;
+  height: 28px;
+}
+
+.iconAudio {
+  position  : absolute;
+  top       : 845px;
+  left      : 898px;
+  width     : 24px;
+  height    : 24px;
+  object-fit: contain;
+}
+
+.actionIconsBottom {
+  position: absolute;
+  top     : 298px;
+  left    : -114px;
+  width   : 28px;
+  height  : 594px;
+}
+
+.reels {
+  text-align: left;
+  color     : white;
+}

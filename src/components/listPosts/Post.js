@@ -32,10 +32,10 @@
 // };
 
 // export default Post;
-import Profile from '../../img/bg1.jpg';
+import Profile from "../../img/bg1.jpg";
 import React from "react";
 import styles from "./Post.module.css";
-import { ChatBubbleOutline, FavoriteBorderOutlined, InsertEmoticonOutlined, ModeCommentOutlined, MoreHoriz, MoreVert, Save, SaveAltOutlined, SendOutlined } from '@mui/icons-material';
+import { ChatBubbleOutline, FavoriteBorderOutlined, InsertEmoticonOutlined, MoreHoriz, SendOutlined } from '@mui/icons-material';
 
 const Post = () => {
     return (
@@ -50,9 +50,14 @@ const Post = () => {
                         />
                         <div className={styles.userName}>
                             <div className={styles.userName1}>
-                                <div className={styles.terrylucas}>
+                                <div className={styles.nickName}>
                                     VTV24
                                 </div>
+                            </div>
+                        </div>
+                        <div className={styles.time}>
+                            <div className={styles.time1}>
+                                <div className={styles.hourAgo}> • 1 hour ago</div>
                             </div>
                         </div>
                         <div className={styles.moreOptions}>
@@ -83,21 +88,12 @@ const Post = () => {
                             <SendOutlined className={styles.iconsmore} />
                         </div>
                     </div>
-                    {/* <div className={styles.iconRight}>
-                        <div className={styles.con3}>
-                            <SaveAltOutlined className={styles.iconsmore} />
-                        </div>
-                    </div> */}
                 </div>
                 <div className={styles.likes}>
-                    <div className={styles.terrylucas}>1.069</div>
+                    <div className={styles.nickName}>1.069</div>
                     <div className={styles.likes1}> Likes</div>
                 </div>
-                <div className={styles.time}>
-                    <div className={styles.time1}>
-                        <div className={styles.hourAgo}>1 hour ago</div>
-                    </div>
-                </div>
+
                 <div className={styles.addcomment}>
                     <div className={styles.border2}>
                         <div className={styles.border3} />
@@ -107,10 +103,11 @@ const Post = () => {
                             <div className={styles.icon2}>
                                 <InsertEmoticonOutlined className={styles.iconsmore} />
                             </div>
-                            <div className={styles.add}>
-                                <input className={styles.addAComment}
-                                    placeholder='Add a comment...' />
-                            </div>
+                            <input
+                                type='text'
+                                className={styles.newComment}
+                                placeholder="Add a comment..."
+                                required />
                             <div className={styles.postBtn}>
                                 <button className={styles.post1}>post</button>
                             </div>
@@ -128,16 +125,15 @@ const Post = () => {
                         <div className={styles.frameParent}>
                             <div className={styles.userNameParent}>
                                 <div className={styles.userName2}>
-                                    <div className={styles.terrylucas1}>{`terrylucas `}</div>
+                                    <div className={styles.nickName1}>{`vtv post `}</div>
                                 </div>
                                 <div className={styles.userComment1}>
                                     <div className={styles.imperdietInSit}>
-                                        Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                                        potenti pellentesque
+                                        Hai vay xinh xinh, ca vang boi trong be nuoc, ngoi len, lan xuong, ca vang mua tung tang.
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.moreBtn}>
+                            <div className={styles.moreIcon}>
                                 <i className={styles.imperdietInSit}>
                                     <span>...</span>
                                     <span className={styles.more1}>more</span>

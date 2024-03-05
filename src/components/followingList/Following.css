@@ -9,12 +9,10 @@
 }
 .following-suggest {
     height: 260px;
-    width: 390px;
+    width: 380px;
     padding:10px 10px 150px 10px;
     margin: 20px 0px;
     box-sizing: border-box;
-    top: 110px;
-    z-index: 1;
     border-bottom: 1px solid white;
 }
 
@@ -65,7 +63,7 @@
     padding: 5px 10px;
     background: linear-gradient(135deg, #6a0728, #662a38, #4d3275);
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 15px;
     border: none;
     color: #fff;
     cursor: pointer;
