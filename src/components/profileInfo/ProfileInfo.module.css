@@ -20,12 +20,6 @@
     line-height: 32px;
     font-size: 30px;
   }
-  .profileName {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
   .editProfile {
     position: relative;
     width: 150px;
@@ -36,55 +30,16 @@
     border-radius: 5px;
     font-size: 15px;
     border: none;
+    cursor: pointer;
   }
-  .button1 {
-    flex-direction: row;
-  }
-  .button,
-  .button1,
-  .profile {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  .button {
-    flex-direction: column;
-  }
-  .profile {
-    flex-direction: row;
-  }
-  .iconsmore {
-    width: 24px;
-    position: relative;
-    height: 24px;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .icon,
-  .icon1 {
-    flex-direction: row;
-  }
-  .icon1 {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .account,
-  .buttonSize,
-  .icon {
+  .account {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     align-items: center;
     gap: 40px;
-  }
-  .account {
     align-self: stretch;
     flex-direction: row;
-  }
-  .buttonSize {
-    flex-direction: column;
   }
   .posts {
     position:relative;
@@ -96,24 +51,14 @@
     position:relative;
     line-height: 18px;
     width: 200px;
-    /* font-size: 22px; */
     font-weight: 700;
   }
-  .button2,
   .tag {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    /* gap: 100px; */
     align-self: stretch;
-  }
-  .terryLucas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    line-height: 24px;
-    font-weight: 600;
   }
   .profileName1 {
     align-self: stretch;
@@ -175,48 +120,10 @@
   align-items: center;
   gap: 10px;
 }
-.madeUs1 {
-  position: absolute;
-  top: 0;
-  left: 18px;
-  letter-spacing: 0.12px;
-  line-height: 16px;
-  font-weight: 600;
-}
-.madeUs2 {
-  position: absolute;
-  top: 0;
-  left: 8px;
-  letter-spacing: 0.12px;
-  line-height: 16px;
-  font-weight: 600;
-}
-.avatarProfilePicIcon3 {
-  width: 77px;
-  position: relative;
-  height: 77px;
-  display: none;
-}
-.madeUs3 {
-  position: absolute;
-  top: 0;
-  left: 2px;
-  letter-spacing: 0.12px;
-  line-height: 16px;
-  font-weight: 600;
-}
-.avatarName3,
 .storys {
   align-items: flex-start;
   justify-content: flex-start;
   gap: 50px;
-}
-.avatarName3 {
-  overflow: hidden;
-  display: none;
-  flex-direction: row;
-}
-.storys {
   display: flex;
   height: 110px;
   width: 100%;
@@ -225,32 +132,6 @@
   left: 0;
   flex-direction: row;
   text-align: center;
-}
-.border,
-.border3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.border,
-.border3 {
-  width: 935px;
-  height: 1px;
-}
-.border3 {
-  height: 100%;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-}
-.icon2 {
-  width: 47px;
-  position: relative;
-  height: 1px;
-}
-.icon2 {
-  width: 12px;
-  height: 12px;
 }
 
 .buttonIcon {
@@ -288,17 +169,9 @@
   text-transform: uppercase;
   font-weight: 600;
 }
-.button8 {
-  display: none;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
 .toogle1 {
     align-items: flex-start;
   justify-content: flex-start;
-}
-.toogle1 {
   position: absolute;
   left: calc(50% - 173px);
   display: flex;
@@ -317,21 +190,6 @@
   border-top: 1px solid white;
   align-items: center;
 }
-.icon7 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.icon10 {
-  width: 277px;
-  position: relative;
-  height: 28px;
-  display: none;
-}
 .userPosts {
   position: absolute;
   left: 0;
@@ -346,14 +204,7 @@
   height: 220px;
   margin: 5px;
 }
-.grid {
-  width: 200px;
-  height: 200px;
-}
 .modal {
-  /* width: 500px;
-  height: 250px;
-  display: flex; */
   position: fixed;
   top: 0;
   left: 0;
@@ -397,4 +248,7 @@
   display: flex;
   justify-content: right;
   margin: 10px;
+}
+.btnClose {
+  cursor: pointer;
 }

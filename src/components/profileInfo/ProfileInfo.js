@@ -19,7 +19,8 @@ const EditForm = ({ open, setOpen }) => {
             <div className={styles.formBorder}>
                 <div className={styles.titleForm}>
                     <h2>Edit Profile</h2>
-                    <Close onClick={() => setOpen(false)} />
+                    <Close onClick={() => setOpen(false)}
+                        className={styles.btnClose} />
                 </div>
                 <form className={styles.editForm}>
                     <input
