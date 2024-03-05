@@ -1,6 +1,6 @@
 .slide-bar {
     background: linear-gradient(135deg, #6a0728, #662a38, #4d3275);
-    height: 460px;
+    height: 400px;
     width: 360px;
     padding:10px 10px 150px 10px;
     margin: 20px 0px;
@@ -25,11 +25,12 @@
     color: white;
 }
 #btn {
+    width: 330px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 #btn.active{
     font-weight: 500;
@@ -40,7 +41,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     cursor: pointer;
     position: relative;
 }

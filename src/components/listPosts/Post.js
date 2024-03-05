@@ -70,7 +70,7 @@ const Post = () => {
             </div>
             <div className={styles.postImg}>
                 <div className={styles.div} />
-                <img className={styles.icon1} alt="" src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/428682762_722357756766765_8872614249068926625_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=3635dc&_nc_eui2=AeEYxFnn5ZxikWbqmV9OzVSL0QAWtzDgQXbRABa3MOBBdpvl6uT2RbVUhbUHfo6wkoHcpAvfW5oJjxcbZ51Fi0vs&_nc_ohc=2Zboj9ofL6gAX9ft0qK&_nc_ht=scontent.fsgn5-8.fna&oh=00_AfCMPwEdmXgLdEhnvyJhI1pacm-eKLE9Zo6stBk69_KqtA&oe=65E6F675" />
+                <img className={styles.icon1} alt="" src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/429823817_709524961350963_3086627652769983253_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=dd5e9f&_nc_eui2=AeE69n9O2HaY1pGC0cw15MzRV9V9ia2LerZX1X2JrYt6tkIli06x4POxJkLtAjO0QvD-I9gUNqfp4GwmUOmqvDpp&_nc_ohc=_WE_UVQDQlcAX9haFYp&_nc_ht=scontent.fsgn5-2.fna&oh=00_AfCGfm1gNUJ6iDw0R6JGb5bYMTwpigMyv9s1xDfp7xn6Xg&oe=65ED050E" />
             </div>
             <div className={styles.footer}>
                 <div className={styles.border}>

@@ -1,4 +1,4 @@
-import { HomeOutlined, MoreHorizOutlined, SearchOutlined, Settings, SettingsCellOutlined, SlowMotionVideoOutlined, Spa } from '@mui/icons-material';
+import { AddBoxOutlined, HomeOutlined, MoreHorizOutlined, SearchOutlined, Settings, SettingsCellOutlined, SlowMotionVideoOutlined, Spa } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../slideBar/SlideBar.css';
@@ -27,8 +27,8 @@ const SlideBar = ({ active = 0 }) => {
             </Link>
             <Link to='/create' className='slidebar-buttons'>
                 <div id='btn' onClick={() => setBtnActive(3)} className={btnActive === 3 ? "active" : ""}>
-                    <Settings className='slidebar-icons' />
-                    <span>Setting</span>
+                    <AddBoxOutlined className='slidebar-icons' />
+                    <span>Create</span>
                 </div>
             </Link>
             <Link to='/setting' className='slidebar-buttons'>
@@ -48,7 +48,6 @@ const SlideBar = ({ active = 0 }) => {
 
                     </div>
                 </Link>
-                <MoreHorizOutlined className='slidebar-icons' />
             </div >
         </div >
     );
