@@ -1,41 +1,44 @@
-// import { BlockOutlined, SentimentDissatisfied, VolumeMuteOutlined } from '@mui/icons-material';
-// import React, { useState } from 'react';
-// import Profile from '../../img/bg1.jpg';
-// import '../listPost/Post.css';
-// import { Button } from '@mui/material';
-
-// const Post = () => {
-//     const [showDelete, setShowDelete] = useState(false);
-//     return (
-//         <div className='post'>
-//             <div className='post-header'>
-//                 <Link to="/friendId" style={{ textDecoration: "none" }}>
-//                     <div className='post-user' style={{ cursor: "pointer" }}>
-//                         <img src={Profile} className='p-img' alt="" />
-//                         <h2>Hau</h2>
-//                         <p className='datePara'>2 hours ago</p>
-//                     </div>
-//                 </Link>
-//                 <div className='delete'>
-//                     {showDelete && (
-//                         <div className='option'>
-//                             <button><SentimentDissatisfied />Not interested in this post</button>
-//                             <button><VolumeMuteOutlined />Mute this user</button>
-//                             <button><BlockOutlined />Block this user</button>
-//                             <button><Report</button>
-//                         </div>
-//                     )}
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Post;
 import Profile from "../../img/bg1.jpg";
 import React from "react";
 import styles from "./Post.module.css";
 import { ChatBubbleOutline, FavoriteBorderOutlined, InsertEmoticonOutlined, MoreHoriz, SendOutlined } from '@mui/icons-material';
+
+const Posts = [
+    {
+        "_id": {
+            "$oid": "65c10a8ee26fdc21e478fb52"
+        },
+        "userid": "659edb7042bf7e60062efc53",
+        "content": "Vitamin sea !",
+        "status": "Public",
+        "createdAt": "2024-02-05 23:19:26.891042",
+        "images": [
+            {
+                "_id": {
+                    "$oid": "65c10a8ee26fdc21e478fb4f"
+                },
+                "image": "https://firebasestorage.googleapis.com/v0/b/znet-6536d.appspot.com/o/images%2Frubytabi_-2024-02-05%2023%3A19%3A14.093534-post?alt=media&token=c960d7ce-2f14-4bcb-8e07-05e8d9553167",
+                "userid": "659edb7042bf7e60062efc53"
+            },
+            {
+                "_id": {
+                    "$oid": "65c10a8ee26fdc21e478fb50"
+                },
+                "image": "https://firebasestorage.googleapis.com/v0/b/znet-6536d.appspot.com/o/images%2Frubytabi_-2024-02-05%2023%3A19%3A18.202339-post?alt=media&token=4c0dfba8-25a6-484f-bd70-d52aa6cd2863",
+                "userid": "659edb7042bf7e60062efc53"
+            },
+            {
+                "_id": {
+                    "$oid": "65c10a8ee26fdc21e478fb51"
+                },
+                "image": "https://firebasestorage.googleapis.com/v0/b/znet-6536d.appspot.com/o/images%2Frubytabi_-2024-02-05%2023%3A19%3A22.544471-post?alt=media&token=6454fd66-8e17-411d-8883-1bbba5bf6406",
+                "userid": "659edb7042bf7e60062efc53"
+            }
+        ],
+        "type": "POST",
+        "location": "Vinpearl Land - Nha Trang City",
+    }
+]
 
 const Post = () => {
     return (
@@ -149,5 +152,6 @@ const Post = () => {
         </div>
     )
 }
+
 
 export default Post

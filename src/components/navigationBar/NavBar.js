@@ -32,7 +32,9 @@ const NavBar = () => {
                 <Link to='/notification' className='noti-icon'>
                     <NotificationsOutlined className='nav-icons' />
                 </Link>
-                <MessageOutlined className='nav-icons' />
+                <Link to='/messenger' className='mess-icon'>
+                    <MessageOutlined className='nav-icons' />
+                </Link>
                 <PeopleAltOutlined className='nav-icons' />
             </div>
             <div className='user-profile'>

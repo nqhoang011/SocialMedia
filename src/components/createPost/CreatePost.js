@@ -1,5 +1,6 @@
 import React from 'react';
 import '../createPost/CreatePost.css';
+import bg1 from '../../img/bg1.jpg';
 import { CloseRounded, EmojiEmotionsOutlined, Face, Face2, Face3, Face4, Face5, Face6, KeyboardVoiceOutlined, PhotoLibraryOutlined, PlayCircleFilled, PlayCircleFilledOutlined, PlayCircleOutline, SentimentSatisfiedOutlined, VoiceChatOutlined } from '@mui/icons-material';
 
 const CreatePost = ({ images, setImages }) => {
@@ -7,8 +8,8 @@ const CreatePost = ({ images, setImages }) => {
         <div className='form-border'>
             <form>
                 <div className='input-box'>
-                    <img className='i-img' />
-                    <input
+                    <img className='i-img' src={bg1} />
+                    <textarea
                         type='text'
                         id='i-input'
                         placeholder="What's in your mind?"

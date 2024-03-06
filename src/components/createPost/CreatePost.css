@@ -9,8 +9,9 @@
 .input-box {
     width: 100%;
     position: relative;
+    margin-top: 20px;
 }
-i-img {
+.i-img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -34,6 +35,8 @@ i-img {
     outline: none;
     font-size: 20px;
     background-color: transparent; 
+    display: flex;
+    align-items: center;
 }
 .file-upload {
     min-width: 100%;

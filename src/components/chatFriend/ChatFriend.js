@@ -241,25 +241,27 @@ const ChatFriend = () => {
                     </div>
                 </div>
             </div>
-            <div className={styles.right}>
-                <div className={styles.content1}>
-                    <div className={styles.content2}>
-                        <div className={styles.header3}>
-                            <div className={styles.header4}>
-                                <div className={styles.yourMessages}>Your Messages</div>
-                            </div>
-                        </div>
-                        <div className={styles.text}>
-                            <div className={styles.text1}>
-                                <div className={styles.active1hAgo}>
-                                    Send private photos and messages to a friend or group.
+            <div className={styles.rightBorder}>
+                <div className={styles.right}>
+                    <div className={styles.content1}>
+                        <div className={styles.content2}>
+                            <div className={styles.header3}>
+                                <div className={styles.header4}>
+                                    <div className={styles.yourMessages}>Your Messages</div>
                                 </div>
                             </div>
-                        </div>
-                        <div className={styles.button}>
-                            <div className={styles.button1}>
-                                <div className={styles.sendMessageWrapper}>
-                                    <button className={styles.sendMessage}>Send Message</button>
+                            <div className={styles.text}>
+                                <div className={styles.text1}>
+                                    <div className={styles.active1hAgo}>
+                                        Send private photos and messages to a friend or group.
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.button}>
+                                <div className={styles.button1}>
+                                    <div className={styles.sendMessageWrapper}>
+                                        <button className={styles.sendMessage}>Send Message</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
