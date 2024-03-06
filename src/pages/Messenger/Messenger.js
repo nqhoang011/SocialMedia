@@ -9,7 +9,6 @@ const Messenger = () => {
         <div className='interface'>
             <NavBar />
             <div className='mess'>
-                <SlideBar />
                 <ChatFriend />
             </div>
         </div>

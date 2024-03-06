@@ -2,7 +2,6 @@
   position     : absolute;
   top          : 40px;
   left         : 650px;
-  border-radius: 10px;
   width        : 353.6px;
   height       : 625.7px;
   object-fit   : cover;
@@ -52,15 +51,12 @@
 }
 
 .icon {
-  width   : 10.7px;
-  position: relative;
-  height  : 14px;
-}
-
-.audioBar,
-.postContent {
-  display        : flex;
-  justify-content: flex-start;
+  z-index: 10;
+  height: 250px;
+  color: white;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
 }
 
 .audioBar {
@@ -71,19 +67,21 @@
 }
 
 .postContent {
-  position      : absolute;
-  width         : calc(100% - 1050px);
+  position      :absolute;
+  width         : 100%;
   right         : 530px;
   bottom        : 136px;
   left          : 520px;
   flex-direction: column;
+  display: flex;
+bottom: 0 ;
+  padding: 10px 10px;
+  left: 0;
   align-items   : flex-start;
+  text-align:justify ;
 }
 
-.div,
-.heartIcon {
-  position: relative;
-}
+
 
 .heartIcon {
   width : 23.6px;
@@ -96,32 +94,26 @@
 }
 
 .iconHeart {
-  position       : absolute;
+  /* position       : absolute; */
   top            : 683px;
   left           : 896px;
   width          : 28px;
-  display        : flex;
-  flex-direction : column;
-  align-items    : center;
-  justify-content: center;
+
 }
 
 .commentIcon {
   width   : 21px;
-  position: relative;
+
   height  : 21px;
 }
 
 .iconComment,
 .iconShare {
-  position       : absolute;
+
   top            : 742px;
   left           : 896px;
   width          : 28px;
-  display        : flex;
-  flex-direction : column;
-  align-items    : center;
-  justify-content: center;
+
 }
 
 .iconShare {
@@ -130,7 +122,7 @@
 }
 
 .iconAudio {
-  position  : absolute;
+
   top       : 845px;
   left      : 898px;
   width     : 24px;
@@ -138,18 +130,18 @@
   object-fit: contain;
 }
 
-.actionIconsBottom {
-  position: absolute;
-  top     : 298px;
-  left    : -114px;
-  width   : 28px;
-  height  : 594px;
-}
 
 .reels {
   text-align: left;
   color     : white;
   width: 353.6px;
   height: 625.7px;
-  background-color: blue;
+  border-radius: 20px;
+  position: relative;
+}
+.reelsContainer{
+margin: 20px auto;
+  width: 500px;
+  height: 625.7px ;
+  position: relative;
 }

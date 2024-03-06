@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ChatFriend.module.css";
 import { ExpandMore, EditCalendar, MapsUgc } from '@mui/icons-material';
+import avtChat from "../../img/bg1.jpg";
 
 const ChatFriend = () => {
     return (
@@ -31,11 +32,91 @@ const ChatFriend = () => {
                 <div className={styles.messenger}>
                     <div className={styles.messageProfile}>
                         <div className={styles.profilePic}>
-                            <div className={styles.profilePicS} />
+                            <img
+                                className={styles.profilePicS}
+                                alt=""
+                                src={avtChat}
+                            />
                         </div>
                         <div className={styles.profile}>
                             <div className={styles.profileName1}>
-                                <div className={styles.trerrylucas}>hoang_011</div>
+                                <div className={styles.nickName}>minchonek</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Cục tác</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>Hauhomhinh</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Thứ 2</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>hoang_hon</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Binh minh</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>hoang_hon</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Binh minh</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>hoang_011</div>
                             </div>
                             <div className={styles.time}>
                                 <div className={styles.active1hAgo}>Hello</div>
@@ -44,11 +125,112 @@ const ChatFriend = () => {
                     </div>
                     <div className={styles.messageProfile}>
                         <div className={styles.profilePic}>
-                            <div className={styles.profilePicS} />
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
                         </div>
                         <div className={styles.profile}>
                             <div className={styles.profileName1}>
-                                <div className={styles.trerrylucas}>hauCutenek</div>
+                                <div className={styles.nickName}>hoang_011</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Hello</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>hoang_011</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Hello</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>hoang_011</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Hello</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>hoang_011</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Hello</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>hoang_011</div>
+                            </div>
+                            <div className={styles.time}>
+                                <div className={styles.active1hAgo}>Hello</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.messageProfile}>
+                        <div className={styles.profilePic}>
+                            <div className={styles.profilePic}>
+                                <img
+                                    className={styles.profilePicS}
+                                    alt=""
+                                    src={avtChat}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.profile}>
+                            <div className={styles.profileName1}>
+                                <div className={styles.nickName}>hauCutenek</div>
                             </div>
                             <div className={styles.time}>
                                 <div className={styles.active1hAgo}>
@@ -62,7 +244,6 @@ const ChatFriend = () => {
             <div className={styles.right}>
                 <div className={styles.content1}>
                     <div className={styles.content2}>
-                        <i className={styles.icon2} style={{ cursor: "pointer" }}> <MapsUgc /></i>
                         <div className={styles.header3}>
                             <div className={styles.header4}>
                                 <div className={styles.yourMessages}>Your Messages</div>

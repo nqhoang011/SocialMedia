@@ -9,8 +9,12 @@ const ListReels = () => {
         <div className='interface'>
             <NavBar />
             <div className='reels'>
-                <SlideBar />
-                <Reels />
+                <SlideBar active={2} />
+                <div style={{ display: "flex", flexDirection: "column", overflow: "auto" }}>
+                    <Reels />
+                    <Reels />
+                    <Reels />
+                </div>
             </div>
         </div>
     );

@@ -96,7 +96,7 @@ const ProfileInfo = () => {
                 </div>
                 <div className={styles.story}>
                     <img
-                        className={styles.avatarProfilePicIcon}
+                        className={styles.avatarProfilePicIcon1}
                         alt=""
                         src={bg1}
                     />

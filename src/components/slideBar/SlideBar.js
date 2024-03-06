@@ -16,7 +16,7 @@ const SlideBar = ({ active = 0 }) => {
             <Link to='/explore' className='slidebar-buttons'>
                 <div id='btn' onClick={() => setBtnActive(1)} className={btnActive === 1 ? "active" : ""}>
                     <SearchOutlined className='slidebar-icons' />
-                    <span>Explore</span>
+                    <span>Search</span>
                 </div>
             </Link>
             <Link to='/reels' className='slidebar-buttons'>
