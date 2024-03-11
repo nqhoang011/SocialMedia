@@ -22,7 +22,7 @@ const Reels = () => {
                     </div>
                     <div className={styles.description}>
                         <div className={styles.loremIpsumDolorContainer}>
-                            <span>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor numbas sator... `}</span>
+                            <span>{`Lời bài hát Waiting For You của MONO được Menback tổng hợp từ album 22 phát hành chính thức của em trai Sơn Tùng M-TP...`}</span>
                             <span className={styles.more}>more</span>
                         </div>
                     </div>

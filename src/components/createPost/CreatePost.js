@@ -8,8 +8,8 @@ const CreatePost = ({ images, setImages }) => {
         <div className='form-border'>
             <form>
                 <div className='input-box'>
-                    <img className='i-img' src={bg1} />
-                    <textarea
+                    {/* <img className='i-img' src={bg1} /> */}
+                    <input
                         type='text'
                         id='i-input'
                         placeholder="What's in your mind?"
