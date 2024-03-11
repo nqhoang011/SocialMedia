@@ -1,15 +1,43 @@
-import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-import SignUp from './SignUp';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import "../Login/Login.css";
 import iconBg1 from "../../img/icon-bg1.png";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../store/UserSlice";
+import { toast } from "react-toastify";
+import { login } from "../../actions/authAction";
+import { loginApi } from "../../utils/api";
 
 const Login = () => {
-
     const [data, setData] = useState({
-        email: '',
-        password: ''
-    })
+        email: undefined,
+        password: undefined
+    });
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    useEffect(() => {
+        const handleLoginApi = async () => {
+            const res = await loginApi();
+            console.log(res)
+            return res
+        }
+        handleLoginApi()
+        if (!handleLoginApi) {
+            handleLoginApi()
+        }
+        dispatch(loginUser())
+    }, []);
+
+    // const handleLogin = async () => {
+    //     try {
+    //         let response = await loginUser();
+    //         console.log(response.data.body);
+    //         navigate('/home');
+    //     }
+    //     catch (error) {
+    //         toast.error('error');
+    //     }
+    // }
 
     return (
         <div className="container">
@@ -24,20 +52,36 @@ const Login = () => {
                         <input type="email"
                             name="email"
                             id="email"
-                            // onChange={handleChange}
-                            placeholder="Email" />
+                            value={data.email}
+                            onChange={(e) => {
+                                setData({
+                                    ...data,
+                                    email: e.target.value
+                                })
+                            }}
+                            placeholder="Email"
+                            required />
                     </div>
 
                     <div className="inputBox">
                         <input type="password"
                             name="password"
                             id="password"
-                            // onChange={handleChange}
-                            placeholder="Password" />
+                            value={data.password}
+                            onChange={(e) => {
+                                setData({
+                                    ...data,
+                                    password: e.target.value
+                                })
+                            }}
+                            placeholder="Password"
+                            required />
                     </div>
 
                     <div className="divBtn">
-                        <button type="submit" className="loginBtn">LogIn</button>
+                        <button type="submit"
+                            className="loginBtn"
+                        >LogIn</button>
                     </div>
                 </form>
                 <div className="dont">
