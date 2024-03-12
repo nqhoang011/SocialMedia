@@ -8,13 +8,23 @@ import { Avatar, Button, Card, Image, Modal } from 'antd';
 import { Dropdown } from 'antd';
 
 const NavBar = () => {
+    const imageBackground = localStorage.getItem('image');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
         setIsModalOpen(!isModalOpen);
     }
     const ModalComponent = () => {
         return (
-            < div style={{ width: "400px", height: "100vh", backgroundColor: "#422948", position: "absolute", right: 10, top: 110, zIndex: "-1", display: !isModalOpen ? 'none' : 'block' }} >
+            < div style={{
+                width: "400px",
+                height: "100vh",
+                backgroundColor: "#422948",
+                position: "absolute",
+                right: 10,
+                top: 110,
+                zIndex: "-1",
+                display: !isModalOpen ? 'none' : 'block'
+            }} >
 
             </div >
         )
@@ -23,7 +33,7 @@ const NavBar = () => {
     const image = localStorage.getItem('image');
     const navigate = useNavigate()
     const handleLogout = () => {
-        localStorage.clear()
+        localStorage.clear();
         setTimeout(() => {
             navigate('/')
         }, 1000)
@@ -31,7 +41,7 @@ const NavBar = () => {
 
     const items = [
         {
-            label: <Link to='/profile'>Profile</Link>,
+            label: <Link to={'/profile/' + localStorage.getItem('id')}>Profile</Link>,
             key: 0,
         },
         {
@@ -53,7 +63,7 @@ const NavBar = () => {
                     <img className='profile-image' src={image} />
                 </a>
             </Dropdown>
-        )
+        );
     }
     return (
         <nav>
@@ -91,13 +101,12 @@ const NavBar = () => {
                     <MessageOutlined className='nav-icons' />
                 </Link>
                 <Link className='mess-icon'>
-                    <PeopleAltOutlined className='nav-icons' /></Link>
-
-
-                <Link to='/profile' className='mess-icon'>
-                    <Avatar className='nav-icons'></Avatar>
+                    <PeopleAltOutlined className='nav-icons' />
                 </Link>
-
+                {/* <Link to='/profile' className='mess-icon'>
+                    <Avatar src={imageBackground} className='nav-icons'></Avatar>
+                </Link> */}
+                <MenuDropdown />
             </div>
         </nav>
     );

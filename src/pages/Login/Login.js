@@ -4,7 +4,6 @@ import "../Login/Login.css";
 import iconBg1 from "../../img/icon-bg1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import { login } from "../../actions/authAction";
 import { loginApi } from "../../utils/api";
 import { isLogin } from "../../store/action";
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +21,7 @@ const Login = () => {
             console.log(res);
             if (res.data !== '') {
                 toast.success('Thành Công')
-                console.log(res.data)
+                // console.log(res.data)
                 dispatch(isLogin(res.data))
                 localStorage.setItem('id', res.data.id)
                 localStorage.setItem('image', res.data.image)

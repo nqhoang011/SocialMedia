@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ProfileInfo.module.css";
 import { Avatar, Box, Button, Modal } from "@mui/material";
 import bg1 from "../../img/bg1.jpg";
 import { AddCircle, Close, GridOnOutlined, SaveAltOutlined, VideoLibrary } from "@mui/icons-material";
-import { FixedSizeList } from "react-window";
+import ListFollowing from "./ListFollowing";
+import ListFollowers from "./ListFollowers";
+import { getCountFollowersApi, getCountFollowingsApi } from "../../utils/api";
+import { toast } from "react-toastify";
 
 const ImageDisplay = () => {
     return <img src={bg1} className={styles.postImage} />
@@ -57,24 +60,34 @@ const ShowFollowers = ({ openFollowers, setOpenFollowers }) => {
                         className={styles.btnClose} />
                 </div>
                 <div className={styles.editForm}>
-                    <Box sx={{
-                        width: '100%',
-                        height: '550px',
-                        maxWidth: '265px',
-                        bgcolor: 'white'
-                    }}>
-                        {/* <FixedSizeList
-                            height={400}
-                            width={360}
-                            itemSize={46}
-                            itemCount={5}
-                            overscanCount={5}
-                        >
-                        </FixedSizeList> */}
-                    </Box>
+                    <ListFollowers />
                     <div className={styles.btnSave}>
                         <Button variant="contained"
                             onClick={() => setOpenFollowers(false)}>Close</Button>
+                    </div>
+                </div>
+            </div>
+        </Modal >
+    );
+}
+
+const ShowFollowings = ({ openFollowings, setOpenFollowings }) => {
+    return (
+        <Modal className={styles.modal}
+            open={openFollowings}
+            onClose={() => setOpenFollowings(false)}
+        >
+            <div className={styles.formBorder2}>
+                <div className={styles.titleForm}>
+                    <h2>Followings</h2>
+                    <Close onClick={() => setOpenFollowings(false)}
+                        className={styles.btnClose} />
+                </div>
+                <div className={styles.editForm}>
+                    <ListFollowing />
+                    <div className={styles.btnSave}>
+                        <Button variant="contained"
+                            onClick={() => setOpenFollowings(false)}>Close</Button>
                     </div>
                 </div>
             </div>
@@ -89,6 +102,24 @@ const ProfileInfo = () => {
     const image = localStorage.getItem('image');
     const name = localStorage.getItem('name');
     const title = localStorage.getItem('title');
+    const [cntFollowers, setCntFollowers] = useState(0);
+    const [cntFollowings, setCntFollowings] = useState(0);
+
+    const getData = async () => {
+        try {
+            let res = await getCountFollowersApi();
+            setCntFollowers(res.data.length);
+            res = await getCountFollowingsApi();
+            setCntFollowings(res.data.length);
+        }
+        catch (error) {
+            toast.error('Lỗi: ' + error.messase);
+        }
+    }
+    useEffect(() => {
+        getData();
+    }, []);
+
     return (
         <div className={styles.userProfilebody}>
             <div className={styles.header}>
@@ -120,15 +151,20 @@ const ProfileInfo = () => {
                                 setOpenFollowers(true);
 
                             }}>
-                            <div className={styles.viewer}>9M </div>
+                            <div className={styles.viewer}>{cntFollowers} </div>
                             <div className={styles.posts}> followers</div>
                         </a>
                         <ShowFollowers openFollowers={openFollowers}
                             setOpenFollowers={setOpenFollowers} />
-                        <a className={styles.count}>
-                            <div className={styles.viewer}>9 </div>
+                        <a className={styles.count}
+                            onClick={() => {
+                                setOpenFollowings(true);
+                            }}>
+                            <div className={styles.viewer}>{cntFollowings} </div>
                             <div className={styles.posts}>following</div>
                         </a>
+                        <ShowFollowings openFollowings={openFollowings}
+                            setOpenFollowings={setOpenFollowings} />
 
                     </div>
                     <div className={styles.profileName1}>

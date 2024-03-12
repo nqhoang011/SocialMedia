@@ -41,7 +41,7 @@ const SlideBar = ({ active = 0 }) => {
                 </div>
             </Link>
             <div className='info'>
-                <Link to='/profile' className='slidebar-buttons'>
+                <Link to={'/profile/' + localStorage.getItem('id')} className='slidebar-buttons'>
                     <div id='btn' onClick={() => setBtnActive(5)} className={btnActive === 5 ? "active" : ""}>
                         <div className='profile-info'>
                             <img className='profile-image' src={img} />
