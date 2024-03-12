@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import "../Login/Login.css";
 import iconBg1 from "../../img/icon-bg1.png";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../store/UserSlice";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { login } from "../../actions/authAction";
 import { loginApi } from "../../utils/api";
-
+import { isLogin } from "../../store/action";
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const [data, setData] = useState({
         email: undefined,
@@ -15,29 +15,39 @@ const Login = () => {
     });
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    useEffect(() => {
-        const handleLoginApi = async () => {
-            const res = await loginApi();
-            console.log(res)
-            return res
-        }
-        handleLoginApi()
-        if (!handleLoginApi) {
-            handleLoginApi()
-        }
-        dispatch(loginUser())
-    }, []);
 
-    // const handleLogin = async () => {
-    //     try {
-    //         let response = await loginUser();
-    //         console.log(response.data.body);
-    //         navigate('/home');
-    //     }
-    //     catch (error) {
-    //         toast.error('error');
-    //     }
-    // }
+    const handleLogin = async () => {
+        try {
+            let res = await loginApi(data.email, data.password);
+            console.log(res);
+            if (res.data !== '') {
+                toast.success('Thành Công')
+                console.log(res.data)
+                dispatch(isLogin(res.data))
+                localStorage.setItem('id', res.data.id)
+                localStorage.setItem('image', res.data.image)
+                localStorage.setItem('email', res.data.email)
+                localStorage.setItem('gender', res.data.gender)
+                localStorage.setItem('name', res.data.name)
+                localStorage.setItem('status', res.data.status)
+                localStorage.setItem('title', res.data.title)
+                localStorage.setItem('roleId', res.data.role.id)
+                localStorage.setItem('roleName', res.data.role.name)
+                localStorage.setItem('roleCode', res.data.role.code)
+                setTimeout(() => {
+                    navigate('/home')
+                }, 2000)
+
+            }
+            else {
+                toast.warning('Đăng nhập thất bại, sai email hoặc mật khẩu')
+            }
+
+        }
+        catch (error) {
+            toast.error('Lỗi: ' + error.messase);
+        }
+    }
 
     return (
         <div className="container">
@@ -45,45 +55,46 @@ const Login = () => {
                 <img className="icon-bg" src={iconBg1}></img>
             </div>
             <div className="container-form">
-                <form /*onSubmit={handleLogin}*/>
-                    <h1>Log In</h1>
-                    <p>Please sign in to continue.</p>
-                    <div className="inputBox">
-                        <input type="email"
-                            name="email"
-                            id="email"
-                            value={data.email}
-                            onChange={(e) => {
-                                setData({
-                                    ...data,
-                                    email: e.target.value
-                                })
-                            }}
-                            placeholder="Email"
-                            required />
-                    </div>
+                <ToastContainer autoClose={2000}></ToastContainer>
 
-                    <div className="inputBox">
-                        <input type="password"
-                            name="password"
-                            id="password"
-                            value={data.password}
-                            onChange={(e) => {
-                                setData({
-                                    ...data,
-                                    password: e.target.value
-                                })
-                            }}
-                            placeholder="Password"
-                            required />
-                    </div>
+                <h1>Log In</h1>
+                <p>Please sign in to continue.</p>
+                <div className="inputBox">
+                    <input type="email"
+                        name="email"
+                        id="email"
+                        value={data.email}
+                        onChange={(e) => {
+                            setData({
+                                ...data,
+                                email: e.target.value
+                            })
+                        }}
+                        placeholder="Email"
+                        required />
+                </div>
 
-                    <div className="divBtn">
-                        <button type="submit"
-                            className="loginBtn"
-                        >LogIn</button>
-                    </div>
-                </form>
+                <div className="inputBox">
+                    <input type="password"
+                        name="password"
+                        id="password"
+                        value={data.password}
+                        onChange={(e) => {
+                            setData({
+                                ...data,
+                                password: e.target.value
+                            })
+                        }}
+                        placeholder="Password"
+                        required />
+                </div>
+
+                <div className="divBtn">
+                    <button onClick={handleLogin}
+                        className="loginBtn"
+                    >LogIn</button>
+                </div>
+
                 <div className="dont">
                     <small className="forgotPassword">Forgot Password?</small>
                     <p>Don't have any account? <Link to="/signup"><span>Sign up</span></Link></p>

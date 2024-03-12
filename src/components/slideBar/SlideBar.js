@@ -5,6 +5,9 @@ import '../slideBar/SlideBar.css';
 
 const SlideBar = ({ active = 0 }) => {
     const [btnActive, setBtnActive] = useState(active);
+    const img = localStorage.getItem('image')
+    const name = localStorage.getItem('name')
+    const title = localStorage.getItem('title')
     return (
         <div className='slide-bar'>
             <Link to='/home' className='slidebar-buttons'>
@@ -41,9 +44,9 @@ const SlideBar = ({ active = 0 }) => {
                 <Link to='/profile' className='slidebar-buttons'>
                     <div id='btn' onClick={() => setBtnActive(5)} className={btnActive === 5 ? "active" : ""}>
                         <div className='profile-info'>
-                            <img className='profile-image' />
-                            <h1><b>Hoang</b></h1>
-                            <span>@QuangHoang</span>
+                            <img className='profile-image' src={img} />
+                            <h1><b>{title}</b></h1>
+                            <span>@{name}</span>
                         </div>
 
                     </div>

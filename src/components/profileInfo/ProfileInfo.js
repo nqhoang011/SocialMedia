@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import styles from "./ProfileInfo.module.css";
-import { Avatar, Button, Modal } from "@mui/material";
+import { Avatar, Box, Button, Modal } from "@mui/material";
 import bg1 from "../../img/bg1.jpg";
 import { AddCircle, Close, GridOnOutlined, SaveAltOutlined, VideoLibrary } from "@mui/icons-material";
+import { FixedSizeList } from "react-window";
 
 const ImageDisplay = () => {
-    return (
-        <img src={bg1} alt="" className={styles.postImage} />
-    );
+    return <img src={bg1} className={styles.postImage} />
 }
 
 const EditForm = ({ open, setOpen }) => {
@@ -36,7 +35,8 @@ const EditForm = ({ open, setOpen }) => {
                         placeholder="Enter Username"
                         required />
                     <div className={styles.btnSave}>
-                        <Button variant="contained">Save</Button>
+                        <Button variant="contained"
+                            onClick={() => setOpen(false)}>Save</Button>
                     </div>
                 </form>
             </div>
@@ -44,13 +44,56 @@ const EditForm = ({ open, setOpen }) => {
     );
 }
 
+const ShowFollowers = ({ openFollowers, setOpenFollowers }) => {
+    return (
+        <Modal className={styles.modal}
+            open={openFollowers}
+            onClose={() => setOpenFollowers(false)}
+        >
+            <div className={styles.formBorder2}>
+                <div className={styles.titleForm}>
+                    <h2>Followers</h2>
+                    <Close onClick={() => setOpenFollowers(false)}
+                        className={styles.btnClose} />
+                </div>
+                <div className={styles.editForm}>
+                    <Box sx={{
+                        width: '100%',
+                        height: '550px',
+                        maxWidth: '265px',
+                        bgcolor: 'white'
+                    }}>
+                        {/* <FixedSizeList
+                            height={400}
+                            width={360}
+                            itemSize={46}
+                            itemCount={5}
+                            overscanCount={5}
+                        >
+                        </FixedSizeList> */}
+                    </Box>
+                    <div className={styles.btnSave}>
+                        <Button variant="contained"
+                            onClick={() => setOpenFollowers(false)}>Close</Button>
+                    </div>
+                </div>
+            </div>
+        </Modal >
+    );
+}
+
 const ProfileInfo = () => {
     const [open, setOpen] = useState(false);
+    const [openFollowers, setOpenFollowers] = useState(false);
+    const [openFollowings, setOpenFollowings] = useState(false);
+    const image = localStorage.getItem('image');
+    const name = localStorage.getItem('name');
+    const title = localStorage.getItem('title');
     return (
         <div className={styles.userProfilebody}>
             <div className={styles.header}>
                 <div className={styles.profilePic}>
-                    <Avatar src={bg1}
+                    <Avatar src={image}
                         sx={{
                             width: "150px",
                             height: "150px"
@@ -58,7 +101,7 @@ const ProfileInfo = () => {
                 </div>
                 <div className={styles.desc}>
                     <div className={styles.account}>
-                        <div className={styles.nickName}>Min_Lytro</div>
+                        <div className={styles.nickName}>{name}</div>
                         <button
                             className={styles.editProfile}
                             onClick={() => setOpen(true)}>Edit Profile</button>
@@ -68,15 +111,28 @@ const ProfileInfo = () => {
                         />
                     </div>
                     <div className={styles.tag}>
-                        <div className={styles.viewer}>99 </div>
-                        <div className={styles.posts}>posts</div>
-                        <div className={styles.viewer}>9M </div>
-                        <div className={styles.posts}>followers</div>
-                        <div className={styles.viewer}>9 </div>
-                        <div className={styles.posts}>following</div>
+                        <a className={styles.count}>
+                            <div className={styles.viewer}>99 </div>
+                            <div className={styles.posts}> posts</div>
+                        </a>
+                        <a className={styles.count}
+                            onClick={() => {
+                                setOpenFollowers(true);
+
+                            }}>
+                            <div className={styles.viewer}>9M </div>
+                            <div className={styles.posts}> followers</div>
+                        </a>
+                        <ShowFollowers openFollowers={openFollowers}
+                            setOpenFollowers={setOpenFollowers} />
+                        <a className={styles.count}>
+                            <div className={styles.viewer}>9 </div>
+                            <div className={styles.posts}>following</div>
+                        </a>
+
                     </div>
                     <div className={styles.profileName1}>
-                        <div className={styles.viewer}>Minh Bui</div>
+                        <div className={styles.viewer}>{title}</div>
                     </div>
                 </div>
             </div>

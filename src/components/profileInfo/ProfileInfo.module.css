@@ -44,20 +44,18 @@
   .posts {
     position:relative;
     line-height: 18px;
-    width: 200px;
-    padding-right: 120px;
   }
   .viewer{
-    position:relative;
     line-height: 18px;
-    width: 200px;
     font-weight: 700;
+    margin-right: 5px;
   }
   .tag {
+    width: 85%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-self: stretch;
   }
   .profileName1 {
@@ -221,7 +219,7 @@
   justify-content: center;
   align-items: center;
 }
-.formBorder {
+.formBorder, .formBorder2 {
   width: 500px;
   height: 265px;
   background-color: white;
@@ -230,6 +228,9 @@
   margin-top: 20px;
   align-items: center;
   border-radius: 20px;
+}
+.formBorder2 {
+  height: 700px;
 }
 .titleForm {
   margin: 20px;
@@ -257,4 +258,14 @@
 }
 .btnClose {
   cursor: pointer;
+}
+.count {
+  width: auto;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: flex-start;
+  align-self: center;
+  justify-content: space-between;
 }

@@ -1,11 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../navigationBar/NavBar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { ChildFriendlyOutlined, Home, Message, MessageOutlined, MessageRounded, MessageSharp, MessageTwoTone, NotificationsOutlined, People, PeopleAltOutlined } from '@mui/icons-material';
 import IconNavBar from '../../img/logo-1.png';
+import { Dropdown } from 'antd';
 
 const NavBar = () => {
+    const [showMenu, setShowMenu] = useState(false);
+    const image = localStorage.getItem('image');
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        localStorage.clear()
+        setTimeout(() => {
+            navigate('/')
+        }, 1000)
+    }
+
+    const items = [
+        {
+            label: <Link to='/profile'>Profile</Link>,
+            key: 0,
+        },
+        {
+            label: <>
+                <Link onClick={handleLogout} >Log out</Link >
+            </>,
+            key: 1,
+        }
+    ];
+    const MenuDropdown = () => {
+        return (
+            <Dropdown
+                menu={{
+                    items,
+                }}
+                trigger={['click']}
+            >
+                <a onClick={(e) => e.preventDefault()}>
+                    <img className='profile-image' src={image} />
+                </a>
+            </Dropdown>
+        )
+    }
     return (
         <nav>
             <div>
@@ -38,9 +75,7 @@ const NavBar = () => {
                 <PeopleAltOutlined className='nav-icons' />
             </div>
             <div className='user-profile'>
-                <Link to='/profile'>
-                    <img className='profile-image' />
-                </Link>
+                <MenuDropdown />
             </div>
         </nav>
     );
