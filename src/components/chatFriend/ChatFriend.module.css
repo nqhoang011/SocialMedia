@@ -33,7 +33,7 @@
   }
   .headerText {
     position: absolute;
-    top: 0;
+    top: 8px;
     left: 0;
     width: 229px;
     height: 36px;
@@ -57,18 +57,20 @@
   .header2 {
     width: 291px;
     position: relative;
-    height: 36px;
+    height: 45px;
     border-bottom: 2px solid white;
   }
   .header1 {
-    width: 342px;
+    width: 350px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 0 0 0 32px;
+    background-color: black;
+
+    justify-content: space-around;
+top:120px;
+left:10px;
     box-sizing: border-box;
     position: fixed;
+    z-index: 10;
   }
   .border1 {
     position: absolute;
