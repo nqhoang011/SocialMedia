@@ -221,13 +221,15 @@
 }
 .formBorder, .formBorder2 {
   width: 500px;
-  height: 265px;
   background-color: white;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
   align-items: center;
   border-radius: 20px;
+}
+.formBorder {
+  height: 400px;
 }
 .formBorder2 {
   height: 700px;
@@ -270,4 +272,12 @@
   align-items: flex-start;
   align-self: center;
   justify-content: space-between;
+}
+.gender {
+  margin: 5px;
+}
+.dob {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
 }

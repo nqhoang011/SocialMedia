@@ -7,12 +7,25 @@ import ListFollowing from "./ListFollowing";
 import ListFollowers from "./ListFollowers";
 import { getCountFollowersApi, getCountFollowingsApi } from "../../utils/api";
 import { toast } from "react-toastify";
+import { DatePicker, Radio } from "antd";
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import dayjs from 'dayjs';
+dayjs.extend(customParseFormat);
 
 const ImageDisplay = () => {
     return <img src={bg1} className={styles.postImage} />
 }
 
 const EditForm = ({ open, setOpen }) => {
+    console.log(localStorage.getItem('gender'));
+    const [genderValue, setGenderValue] = useState(localStorage.getItem('gender'));
+    const onChange = (e) => {
+        // console.log('radio checked', e.target.value);
+        setGenderValue(e.target.value);
+    };
+
+    const dateFormat = 'YYYY-MM-DD';
+
     return (
         <Modal className={styles.modal}
             open={open}
@@ -37,6 +50,24 @@ const EditForm = ({ open, setOpen }) => {
                         // value={ }
                         placeholder="Enter Username"
                         required />
+                    <div className={styles.gender}>
+                        <h3>Gender</h3>
+                        <Radio.Group size="large"
+                            onChange={onChange}
+                            value={genderValue}
+                        >
+                            <Radio value={true}>Male</Radio>
+                            <Radio value={false}>Female</Radio>
+                        </Radio.Group>
+                    </div>
+                    <div className={styles.dob}>
+                        <h3 style={{ marginRight: "15px" }}>Date of birth: </h3>
+                        <DatePicker
+                            defaultValue={dayjs('2019-09-03', dateFormat)}
+                            minDate={dayjs('1919-08-01', dateFormat)}
+                            maxDate={dayjs('2020-10-31', dateFormat)}
+                        />
+                    </div>
                     <div className={styles.btnSave}>
                         <Button variant="contained"
                             onClick={() => setOpen(false)}>Save</Button>
