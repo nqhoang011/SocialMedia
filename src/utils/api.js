@@ -22,3 +22,6 @@ export const getCountFollowingsApi = () => {
     return axios.get(`/api/v1/following/get-userid/${localStorage.getItem('id')}`);
 }
 
+export const getListPostsApi = () => {
+    return axios.get(`/api/v1/posts/get-all/post?userid=${localStorage.getItem('id')}`)
+}

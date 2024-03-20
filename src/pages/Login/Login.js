@@ -33,6 +33,7 @@ const Login = () => {
                 localStorage.setItem('roleId', res.data.role.id)
                 localStorage.setItem('roleName', res.data.role.name)
                 localStorage.setItem('roleCode', res.data.role.code)
+                localStorage.setItem('dob', res.data.dob)
                 setTimeout(() => {
                     navigate('/home')
                 }, 2000)

@@ -5,15 +5,16 @@ import bg1 from "../../img/bg1.jpg";
 import { AddCircle, Close, GridOnOutlined, SaveAltOutlined, VideoLibrary } from "@mui/icons-material";
 import ListFollowing from "./ListFollowing";
 import ListFollowers from "./ListFollowers";
-import { getCountFollowersApi, getCountFollowingsApi } from "../../utils/api";
+import { getCountFollowersApi, getCountFollowingsApi, getListPosts, getListPostsApi } from "../../utils/api";
 import { toast } from "react-toastify";
 import { DatePicker, Radio } from "antd";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import dayjs from 'dayjs';
 import ViewPost from "./viewpost/ViewPost";
+import Item from "antd/es/list/Item";
 dayjs.extend(customParseFormat);
 
-const ImageDisplay = () => {
+const ImageDisplay = ({ imgLink }) => {
     const [postId, setPostId] = useState(1);
     const [viewPost, setViewPost] = useState(false);
     const updateViewPost = (close) => {
@@ -21,7 +22,7 @@ const ImageDisplay = () => {
     }
     return (
         <>
-            <img src={bg1} className={styles.postImage}
+            <img src={imgLink} className={styles.postImage}
                 onClick={() => setViewPost(true)} />
             {viewPost && <ViewPost viewPost={viewPost} onClose={updateViewPost} />}
         </>
@@ -52,13 +53,19 @@ const EditForm = ({ open, setOpen }) => {
                     <input
                         className={styles.formInput}
                         type="text"
-                        // value={ }
+                        value={localStorage.getItem('email')}
+                        placeholder="Enter Your Email Address"
+                        required />
+                    <input
+                        className={styles.formInput}
+                        type="text"
+                        value={localStorage.getItem('title')}
                         placeholder="Enter Your Name"
                         required />
                     <input
                         className={styles.formInput}
                         type="text"
-                        // value={ }
+                        value={localStorage.getItem('name')}
                         placeholder="Enter Username"
                         required />
                     <div className={styles.gender}>
@@ -73,11 +80,13 @@ const EditForm = ({ open, setOpen }) => {
                     </div>
                     <div className={styles.dob}>
                         <h3 style={{ marginRight: "15px" }}>Date of birth: </h3>
-                        <DatePicker
+                        {/* <DatePicker
                             defaultValue={dayjs(localStorage.getItem('dob'), dateFormat)}
                             minDate={dayjs('1919-08-01', dateFormat)}
                             maxDate={dayjs('2020-10-31', dateFormat)}
-                        />
+                        /> */}
+                        <input type='text'
+                            value={localStorage.getItem('dob')} />
                     </div>
                     <div className={styles.btnSave}>
                         <Button variant="contained"
@@ -138,17 +147,12 @@ const ShowFollowings = ({ openFollowings, setOpenFollowings }) => {
     );
 }
 
-const ListPosts = () => {
+const ListPosts = ({ listImgs }) => {
     return (
         <div className={styles.userPosts}>
-            <ImageDisplay />
-            {/* <ImageDisplay />
-            <ImageDisplay />
-            <ImageDisplay />
-            <ImageDisplay />
-            <ImageDisplay />
-            <ImageDisplay />
-            <ImageDisplay /> */}
+            {listImgs.map((item) => (
+                <ImageDisplay key={item.post.images[0].id} imgLink={item.post.images[0].image} />
+            ))}
         </div>
     )
 }
@@ -176,12 +180,16 @@ const ProfileInfo = () => {
     const [cntFollowers, setCntFollowers] = useState(0);
     const [cntFollowings, setCntFollowings] = useState(0);
     const [showPosts, setShowPosts] = useState(true);
+    const [listImages, setListImages] = useState([]);
     const getData = async () => {
         try {
             let res = await getCountFollowersApi();
             setCntFollowers(res.data.length);
             res = await getCountFollowingsApi();
             setCntFollowings(res.data.length);
+            res = await getListPostsApi();
+            // console.log(res.data[0].post.images[0].image);
+            setListImages(res.data);
         }
         catch (error) {
             toast.error('Lỗi: ' + error.messase);
@@ -214,7 +222,7 @@ const ProfileInfo = () => {
                     </div>
                     <div className={styles.tag}>
                         <a className={styles.count}>
-                            <div className={styles.viewer}>99 </div>
+                            <div className={styles.viewer}>{listImages.length} </div>
                             <div className={styles.posts}> posts</div>
                         </a>
                         <a className={styles.count}
@@ -292,7 +300,8 @@ const ProfileInfo = () => {
                     </button>
                 </div>
             </div>
-            {showPosts === true && <ListPosts />}
+            {showPosts === true && <ListPosts
+                listImgs={listImages} />}
             {showPosts === false && <ListReels />}
         </div>
     );
