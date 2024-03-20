@@ -4,7 +4,7 @@ import styles from "./Post.module.css";
 import { ChatBubbleOutline, FavoriteBorderOutlined, InsertEmoticonOutlined, MoreHoriz, SendOutlined } from '@mui/icons-material';
 import ViewPost from "../profileInfo/viewpost/ViewPost";
 
-const Post = ({ }) => {
+const Post = ({ data }) => {
     const [viewPostId, setViewPostId] = useState("");
     return (
         <div className={styles.post}>
@@ -13,21 +13,21 @@ const Post = ({ }) => {
                     <div className={styles.header1}>
                         <img
                             className={styles.avatarCircleIcon}
-                            alt=""
-                            src={Profile}
+                            // alt=""
+                            src={data.user.image}
                         />
                         <div className={styles.userName}>
                             <div className={styles.userName1}>
                                 <div className={styles.nickName}>
-                                    VTV24
+                                    {data.user.name}
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.time}>
+                        {/* <div className={styles.time}>
                             <div className={styles.time1}>
                                 <div className={styles.hourAgo}> • 1 hour ago</div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className={styles.moreOptions}>
                             <div className={styles.icon}>
                                 <i style={{ cursor: "pointer" }}><MoreHoriz /></i>
@@ -38,7 +38,7 @@ const Post = ({ }) => {
             </div>
             <div className={styles.postImg}>
                 <div className={styles.div} />
-                <img className={styles.icon1} alt="" src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/429823817_709524961350963_3086627652769983253_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=dd5e9f&_nc_eui2=AeE69n9O2HaY1pGC0cw15MzRV9V9ia2LerZX1X2JrYt6tkIli06x4POxJkLtAjO0QvD-I9gUNqfp4GwmUOmqvDpp&_nc_ohc=_WE_UVQDQlcAX9haFYp&_nc_ht=scontent.fsgn5-2.fna&oh=00_AfCGfm1gNUJ6iDw0R6JGb5bYMTwpigMyv9s1xDfp7xn6Xg&oe=65ED050E" />
+                <img className={styles.icon1} src={data.post.images[0].image} />
             </div>
             <div className={styles.footer}>
                 <div className={styles.border}>
@@ -103,7 +103,7 @@ const Post = ({ }) => {
                             </div>
                             <a className={styles.moreIcon}
                                 onClick={() => {
-                                    
+
                                 }}>
                                 <i className={styles.imperdietInSit}>
                                     <span>...</span>

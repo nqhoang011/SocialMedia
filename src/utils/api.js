@@ -23,5 +23,13 @@ export const getCountFollowingsApi = () => {
 }
 
 export const getListPostsApi = () => {
-    return axios.get(`/api/v1/posts/get-all/post?userid=${localStorage.getItem('id')}`)
+    return axios.get(`/api/v1/posts/get-all/post?userid=${localStorage.getItem('id')}`);
+}
+
+export const getUserStoriesApi = () => {
+    return axios.get(`/api/v1/stories/get-all?userid=${localStorage.getItem('id')}`);
+}
+
+export const getFeedApi = () => {
+    return axios.get(`/api/v1/posts/get-other-post?userid=${localStorage.getItem('id')}`);
 }

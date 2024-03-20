@@ -1,8 +1,8 @@
 import { Avatar, Modal, Row, Col, Input, Button } from 'antd';
 import { HeartOutlined, CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
-import bg1 from '../../../img/bg1.jpg';
 import './ViewPost.css';
+import { Title } from '@mui/icons-material';
 
 const Comment = ({ author, content }) => (
     <div className='cmt-border'>
@@ -14,16 +14,10 @@ const Comment = ({ author, content }) => (
     </div>
 );
 
-const ViewPost = ({ viewPost, onClose }) => {
+const ViewPost = ({ viewPost, onClose, postData, user = null }) => {
+    // console.log(postData);
     const [newComment, setNewComment] = useState('');
-    const [comments, setComments] = useState([
-        { author: 'Myname', content: 'looks good' },
-        { author: 'AnotherUser', content: 'Nice post!' },
-        { author: 'User3', content: 'Great content!' },
-        { author: 'User3', content: 'Great content!' },
-        { author: 'User3', content: 'Great content!' },
-
-    ]);
+    const [comments, setComments] = useState(postData.comments);
 
     const handleClose = () => {
         onClose(false);
@@ -37,12 +31,8 @@ const ViewPost = ({ viewPost, onClose }) => {
     };
 
     const [currentIndex, setCurrentIndex] = useState(0);
-    const images = [
-        'https://2.bp.blogspot.com/-OvzSvVKgZ-o/WKMFGVDf2bI/AAAAAAAAGYA/6nSIGSOOAmEpbfpfKsJ393SPT_FCHKPXgCEw/s1600/anh4x6.jpg',
-        'https://bizweb.dktcdn.net/100/242/347/files/chup-anh-the-lay-ngay.jpg?v=1660097103529',
-        'https://3.bp.blogspot.com/-Di9C8QOxZWA/WKMFGsEb0sI/AAAAAAAAGYI/925tyV0ICZITqIwmc92xdFw4DvOPcLVBACEw/s1600/anh-6x9.jpg',
-    ];
-
+    const images = postData.post.images;
+    // console.log(images);
     const handleClickPrev = () => {
         setCurrentIndex(prevIndex => prevIndex === 0 ? images.length - 1 : prevIndex - 1);
     };
@@ -62,7 +52,7 @@ const ViewPost = ({ viewPost, onClose }) => {
             <Row gutter={[16, 16]} align='start'>
                 <Col span={9}>
                     <div className='img-container'>
-                        <img src={images[currentIndex]} className='image-content' alt='Post' />
+                        <img src={images[currentIndex].image} className='image-content' alt='Post' />
                         <button className="prev-btn" onClick={handleClickPrev}>&#10094;</button>
                         <button className="next-btn" onClick={handleClickNext}>&#10095;</button>
                     </div>
@@ -70,24 +60,19 @@ const ViewPost = ({ viewPost, onClose }) => {
                 <Col span={15}>
                     <div className='right-side'>
                         <div className='top-right'>
-                            <Avatar />
-                            <a>Author's name</a>
+                            <Avatar src={localStorage.getItem('image')} />
+                            <a>{localStorage.getItem('title')}</a>
                         </div>
                         <p className='post-content'>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's standard dummy text
-                            ever since the 1500s, when an unknown printer took a galley of
-                            type and scrambled it to make a type specimen book. It has
-                            survived not only five centuries, but also the leap into
-                            electronic typesetting, remaining essentially unchanged. It was
-                            popularised in the 1960s with the release of Letraset sheets
-                            containing Lorem Ipsum passages, and more recently with desktop
-                            publishing software like Aldus PageMaker including versions of
-                            Lorem Ipsum.
+                            {postData.post.content}
                         </p>
                         <div className='add-comment'>
                             <div className='icons'>
-                                <Button type='text' icon={<HeartOutlined />} />
+                                <div>
+                                    <Button type='text' icon={<HeartOutlined />} />
+                                    <a>{postData.favorites.length}</a>
+                                </div>
+
                                 <Button type='text' icon={<CommentOutlined />} />
                                 <Button type='text' icon={<ShareAltOutlined />} />
                             </div>
@@ -99,11 +84,11 @@ const ViewPost = ({ viewPost, onClose }) => {
                             <Button type='primary' onClick={handleAddComment} style={{ background: '#6a0728' }}>Add Comment</Button>
                         </div>
                         <div className='cmt-container'>
-                            <div className='cmt'>
+                            {/* <div className='cmt'>
                                 {comments.map((comment, index) => (
                                     <Comment key={index} author={comment.author} content={comment.content} />
                                 ))}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </Col>

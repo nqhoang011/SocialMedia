@@ -5,26 +5,26 @@ import bg1 from "../../img/bg1.jpg";
 import { AddCircle, Close, GridOnOutlined, SaveAltOutlined, VideoLibrary } from "@mui/icons-material";
 import ListFollowing from "./ListFollowing";
 import ListFollowers from "./ListFollowers";
-import { getCountFollowersApi, getCountFollowingsApi, getListPosts, getListPostsApi } from "../../utils/api";
+import { getCountFollowersApi, getCountFollowingsApi, getListPosts, getListPostsApi, getUserStoriesApi } from "../../utils/api";
 import { toast } from "react-toastify";
 import { DatePicker, Radio } from "antd";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import dayjs from 'dayjs';
 import ViewPost from "./viewpost/ViewPost";
-import Item from "antd/es/list/Item";
+import ViewStory from "./viewStory/ViewStory";
 dayjs.extend(customParseFormat);
 
-const ImageDisplay = ({ imgLink }) => {
-    const [postId, setPostId] = useState(1);
+const ImageDisplay = ({ data }) => {
+    // console.log(data.post.images[0].image);
     const [viewPost, setViewPost] = useState(false);
     const updateViewPost = (close) => {
         setViewPost(close);
     }
     return (
         <>
-            <img src={imgLink} className={styles.postImage}
+            <img src={data.post.images[0].image} className={styles.postImage}
                 onClick={() => setViewPost(true)} />
-            {viewPost && <ViewPost viewPost={viewPost} onClose={updateViewPost} />}
+            {viewPost && <ViewPost viewPost={viewPost} onClose={updateViewPost} postData={data} />}
         </>
     )
 }
@@ -151,7 +151,7 @@ const ListPosts = ({ listImgs }) => {
     return (
         <div className={styles.userPosts}>
             {listImgs.map((item) => (
-                <ImageDisplay key={item.post.images[0].id} imgLink={item.post.images[0].image} />
+                <ImageDisplay key={item.post.images[0].id} data={item} />
             ))}
         </div>
     )
@@ -181,6 +181,8 @@ const ProfileInfo = () => {
     const [cntFollowings, setCntFollowings] = useState(0);
     const [showPosts, setShowPosts] = useState(true);
     const [listImages, setListImages] = useState([]);
+    const [openStory, setOpenStory] = useState(false);
+    const [listStories, setListStories] = useState([]);
     const getData = async () => {
         try {
             let res = await getCountFollowersApi();
@@ -188,8 +190,10 @@ const ProfileInfo = () => {
             res = await getCountFollowingsApi();
             setCntFollowings(res.data.length);
             res = await getListPostsApi();
-            // console.log(res.data[0].post.images[0].image);
             setListImages(res.data);
+            res = await getUserStoriesApi();
+            // console.log(res.data);
+            setListStories(res.data);
         }
         catch (error) {
             toast.error('Lỗi: ' + error.messase);
@@ -198,6 +202,30 @@ const ProfileInfo = () => {
     useEffect(() => {
         getData();
     }, []);
+
+    const ListStories = () => {
+        const handleCloseStory = (close) => {
+            setOpenStory(close);
+        }
+        return (
+            listStories.map((item) => (
+                <div className={styles.story} key={item.id}>
+                    <img
+                        className={styles.avatarProfilePicIcon1}
+                        alt=""
+                        src={item.src_image}
+                        onClick={() => setOpenStory(true)}
+                    />
+                    <div className={styles.avatarName}>
+                        <div className={styles.madeUsWrapper}>
+                            <div className={styles.madeUs}>My</div>
+                        </div>
+                    </div>
+                    {openStory && <ViewStory key={item.id} data={item} onCloseStory={handleCloseStory} />}
+                </div>
+            ))
+        )
+    }
 
     return (
         <div className={styles.userProfilebody}>
@@ -265,18 +293,7 @@ const ProfileInfo = () => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.story}>
-                    <img
-                        className={styles.avatarProfilePicIcon1}
-                        alt=""
-                        src={bg1}
-                    />
-                    <div className={styles.avatarName}>
-                        <div className={styles.madeUsWrapper}>
-                            <div className={styles.madeUs}>My</div>
-                        </div>
-                    </div>
-                </div>
+                <ListStories />
             </div>
             <div className={styles.toogle}>
                 <div className={styles.toogle1}>

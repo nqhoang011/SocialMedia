@@ -94,6 +94,9 @@
     width: 77px;
     height: 77px;
   }
+  .avatarProfilePicIcon1:hover {
+    cursor: pointer;
+  }
   .madeUs {
     position: absolute;
     top: 0;
