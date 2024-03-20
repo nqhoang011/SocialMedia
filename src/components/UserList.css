@@ -1,0 +1,23 @@
+.add-user-button {
+    background: linear-gradient(135deg, #6a0728, #662a38, #4d3275);
+    border-color: #213344; 
+}
+
+.add-user-button:hover {
+    background-color: purple !important;
+}
+
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gender-select {
+    width: 150px;
+}
+
+.user-id-input {
+    width: 300px; 
+}
+
