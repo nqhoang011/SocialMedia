@@ -1,4 +1,5 @@
 import { Avatar, Modal, Row, Col, Input, Button } from 'antd';
+import { HeartOutlined, CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import bg1 from '../../../img/bg1.jpg';
 import './ViewPost.css';
@@ -21,7 +22,7 @@ const ViewPost = ({ viewPost, onClose }) => {
         { author: 'User3', content: 'Great content!' },
         { author: 'User3', content: 'Great content!' },
         { author: 'User3', content: 'Great content!' },
-        { author: 'User3', content: 'Great content!' },
+
     ]);
 
     const handleClose = () => {
@@ -35,6 +36,21 @@ const ViewPost = ({ viewPost, onClose }) => {
         }
     };
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const images = [
+        'https://2.bp.blogspot.com/-OvzSvVKgZ-o/WKMFGVDf2bI/AAAAAAAAGYA/6nSIGSOOAmEpbfpfKsJ393SPT_FCHKPXgCEw/s1600/anh4x6.jpg',
+        'https://bizweb.dktcdn.net/100/242/347/files/chup-anh-the-lay-ngay.jpg?v=1660097103529',
+        'https://3.bp.blogspot.com/-Di9C8QOxZWA/WKMFGsEb0sI/AAAAAAAAGYI/925tyV0ICZITqIwmc92xdFw4DvOPcLVBACEw/s1600/anh-6x9.jpg',
+    ];
+
+    const handleClickPrev = () => {
+        setCurrentIndex(prevIndex => prevIndex === 0 ? images.length - 1 : prevIndex - 1);
+    };
+
+    const handleClickNext = () => {
+        setCurrentIndex(prevIndex => prevIndex === images.length - 1 ? 0 : prevIndex + 1);
+    };
+
     return (
         <Modal
             centered
@@ -44,12 +60,14 @@ const ViewPost = ({ viewPost, onClose }) => {
             onCancel={() => onClose(false)}
         >
             <Row gutter={[16, 16]} align='start'>
-                <Col span={12}>
+                <Col span={9}>
                     <div className='img-container'>
-                        <img src={bg1} className='image-content' alt='Post' />
+                        <img src={images[currentIndex]} className='image-content' alt='Post' />
+                        <button className="prev-btn" onClick={handleClickPrev}>&#10094;</button>
+                        <button className="next-btn" onClick={handleClickNext}>&#10095;</button>
                     </div>
                 </Col>
-                <Col span={12}>
+                <Col span={15}>
                     <div className='right-side'>
                         <div className='top-right'>
                             <Avatar />
@@ -68,6 +86,11 @@ const ViewPost = ({ viewPost, onClose }) => {
                             Lorem Ipsum.
                         </p>
                         <div className='add-comment'>
+                            <div className='icons'>
+                                <Button type='text' icon={<HeartOutlined />} />
+                                <Button type='text' icon={<CommentOutlined />} />
+                                <Button type='text' icon={<ShareAltOutlined />} />
+                            </div>
                             <Input.TextArea
                                 value={newComment}
                                 onChange={(e) => setNewComment(e.target.value)}
@@ -88,5 +111,4 @@ const ViewPost = ({ viewPost, onClose }) => {
         </Modal>
     );
 };
-
 export default ViewPost;
