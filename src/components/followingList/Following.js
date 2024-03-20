@@ -3,7 +3,7 @@ import '../followingList/Following.css';
 
 const FollowingSuggest = () => {
     return (
-        <div className='right-side'>
+        <div className='h-right-side'>
             <div className='following-suggest'>
                 <div className='define'>
                     <span><b>Suggestion for you</b></span>

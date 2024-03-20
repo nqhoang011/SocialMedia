@@ -155,17 +155,32 @@
 .buttonTitle {
   flex-direction: row;
 }
-.button5,
+.buttonPosts, .buttonReels,
 .buttonTitle {
+  color: white;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
 }
-.button5 {
+/* .buttonTitle:hover {
+  color: white;
+} */
+.buttonPosts, .buttonReels {
+  background-color: black;
   flex-direction: column;
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  border: none;
+}
+.buttonPosts:hover, .buttonReels:hover {
+  color: white;
+  cursor: pointer;
+}
+.buttonPosts:focus, .buttonReels:focus{
+  color: white;
+  /* display: flex; */
+  border-bottom: 1px solid white;  
 }
 .posts4 {
   position: relative;
@@ -207,6 +222,9 @@
   width: 220px;
   height: 220px;
   margin: 5px;
+}
+.postImage:hover {
+  cursor: pointer;
 }
 .modal {
   position: fixed;

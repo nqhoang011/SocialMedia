@@ -10,14 +10,25 @@ import { toast } from "react-toastify";
 import { DatePicker, Radio } from "antd";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import dayjs from 'dayjs';
+import ViewPost from "./viewpost/ViewPost";
 dayjs.extend(customParseFormat);
 
 const ImageDisplay = () => {
-    return <img src={bg1} className={styles.postImage} />
+    const [postId, setPostId] = useState(1);
+    const [viewPost, setViewPost] = useState(false);
+    const updateViewPost = (close) => {
+        setViewPost(close);
+    }
+    return (
+        <>
+            <img src={bg1} className={styles.postImage}
+                onClick={() => setViewPost(true)} />
+            {viewPost && <ViewPost viewPost={viewPost} onClose={updateViewPost} />}
+        </>
+    )
 }
 
 const EditForm = ({ open, setOpen }) => {
-    console.log(localStorage.getItem('gender'));
     const [genderValue, setGenderValue] = useState(localStorage.getItem('gender'));
     const onChange = (e) => {
         // console.log('radio checked', e.target.value);
@@ -54,7 +65,7 @@ const EditForm = ({ open, setOpen }) => {
                         <h3>Gender</h3>
                         <Radio.Group size="large"
                             onChange={onChange}
-                            value={genderValue}
+                            value={genderValue === true ? true : false}
                         >
                             <Radio value={true}>Male</Radio>
                             <Radio value={false}>Female</Radio>
@@ -63,7 +74,7 @@ const EditForm = ({ open, setOpen }) => {
                     <div className={styles.dob}>
                         <h3 style={{ marginRight: "15px" }}>Date of birth: </h3>
                         <DatePicker
-                            defaultValue={dayjs('2019-09-03', dateFormat)}
+                            defaultValue={dayjs(localStorage.getItem('dob'), dateFormat)}
                             minDate={dayjs('1919-08-01', dateFormat)}
                             maxDate={dayjs('2020-10-31', dateFormat)}
                         />
@@ -102,6 +113,7 @@ const ShowFollowers = ({ openFollowers, setOpenFollowers }) => {
     );
 }
 
+
 const ShowFollowings = ({ openFollowings, setOpenFollowings }) => {
     return (
         <Modal className={styles.modal}
@@ -126,6 +138,34 @@ const ShowFollowings = ({ openFollowings, setOpenFollowings }) => {
     );
 }
 
+const ListPosts = () => {
+    return (
+        <div className={styles.userPosts}>
+            <ImageDisplay />
+            {/* <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay /> */}
+        </div>
+    )
+}
+
+const ListReels = () => {
+    return (
+        <div className={styles.userPosts}>
+            {/* <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay />
+            <ImageDisplay /> */}
+        </div>
+    )
+}
+
 const ProfileInfo = () => {
     const [open, setOpen] = useState(false);
     const [openFollowers, setOpenFollowers] = useState(false);
@@ -135,7 +175,7 @@ const ProfileInfo = () => {
     const title = localStorage.getItem('title');
     const [cntFollowers, setCntFollowers] = useState(0);
     const [cntFollowings, setCntFollowings] = useState(0);
-
+    const [showPosts, setShowPosts] = useState(true);
     const getData = async () => {
         try {
             let res = await getCountFollowersApi();
@@ -232,34 +272,28 @@ const ProfileInfo = () => {
             </div>
             <div className={styles.toogle}>
                 <div className={styles.toogle1}>
-                    <div className={styles.button5}>
+                    <button className={styles.buttonPosts}
+                        onClick={() => setShowPosts(true)}>
                         <div className={styles.buttonIcon}>
                             <GridOnOutlined />
                         </div>
                         <div className={styles.buttonTitle}>
                             <b className={styles.posts3}>POSTS</b>
                         </div>
-                    </div>
-                    <div className={styles.button5}>
+                    </button>
+                    <button className={styles.buttonReels}
+                        onClick={() => setShowPosts(false)}>
                         <div className={styles.buttonIcon}>
                             <VideoLibrary />
                         </div>
                         <div className={styles.buttonTitle}>
-                            <div className={styles.posts4}>reels</div>
+                            <div className={styles.posts4}>REELS</div>
                         </div>
-                    </div>
+                    </button>
                 </div>
             </div>
-            <div className={styles.userPosts}>
-                <ImageDisplay />
-                <ImageDisplay />
-                <ImageDisplay />
-                <ImageDisplay />
-                <ImageDisplay />
-                <ImageDisplay />
-                <ImageDisplay />
-                <ImageDisplay />
-            </div>
+            {showPosts === true && <ListPosts />}
+            {showPosts === false && <ListReels />}
         </div>
     );
 };

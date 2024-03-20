@@ -1,0 +1,54 @@
+.right-side {
+    margin-left: 20px; 
+    padding-right: 20px; 
+    display: flex;
+    flex-direction: column; 
+}
+
+.top-right {
+    display: flex;
+    align-items:flex-start;
+    gap: 5px;
+}
+
+.img-container {
+    margin-right: 20px; 
+    width: 100%;
+    flex: 1; 
+    align-self: flex-start;
+}
+
+.image-content {
+    display: flex;
+    align-items:flex-start;
+    width: 100%; 
+    height: auto;
+}
+
+.post-content {
+    max-width: 100%; 
+    margin-bottom: 20px;
+    margin-left: 35px;
+}
+
+.cmt-container {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.cmt-border {
+    border-top: 1px solid #ddd; 
+    padding-top: 10px;
+}
+
+.add-comment {
+    margin-bottom: 20px; 
+}
+
+.add-comment textarea {
+    margin-bottom: 10px; 
+}
+
+.add-comment button {
+    margin-left: 5px; 
+}
