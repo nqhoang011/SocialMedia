@@ -1,275 +1,74 @@
-import React from "react";
-import styles from "./ChatFriend.module.css";
-import { ExpandMore, EditCalendar, MapsUgc } from '@mui/icons-material';
+import React, { useState } from 'react';
+import { Layout, List, Avatar, Button } from 'antd';
+import Conversation from './Conversation';
+import styles from './ChatFriend.module.css';
 import avtChat from "../../img/bg1.jpg";
+import { UserAddOutlined } from '@ant-design/icons';
 
-const ChatFriend = () => {
+const { Sider, Content } = Layout;
+
+const ChatPage = () => {
+    const [selectedUser, setSelectedUser] = useState(null);
+
+    const users = [
+        { id: 1, name: 'Mingg', avatar: avtChat, lastMessage: 'Tin nhắn mới nhất từ Minh' },
+        { id: 2, name: 'Hoàng', avatar: avtChat, lastMessage: 'Tin nhắn mới nhất từ Hoàng nè có thấy hong' },
+        { id: 3, name: 'Hậu', avatar: avtChat, lastMessage: 'Tin nhắn mới nhất từ Hậu' },
+    ];
+
+    const truncateText = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + '...';
+        } else {
+            return text;
+        }
+    };
+
+    const handleUserClick = (user) => {
+        setSelectedUser(user);
+    };
+
     return (
-        <div className={styles.content}>
-            <div className={styles.left}>
+        <Layout className={styles.content}>
+            <Sider width={370} style={{ background: '#d8cdcd' }} className={styles.left}>
                 <div className={styles.header}>
-                    <div className={styles.header1}>
-                        <div className={styles.header2}>
-                            <div className={styles.headerText}>
-                                <div className={styles.profileNameParent}>
-                                    <div className={styles.profileName}>
-                                        <div className={styles.nickName}>Min_Lytro</div>
-                                    </div>
-                                    <div className={styles.icon}>
-                                        <i style={{ cursor: "pointer" }}> <ExpandMore /></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.icon1}>
-                                <i style={{ cursor: "pointer" }}> <EditCalendar /></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.border}>
-                        <div className={styles.border1} />
-                    </div>
+                    <Avatar src={avtChat} />
+                    <span className={styles.profileName}>ming__3</span>
+                    <Button
+                        type="primary"
+                        icon={<UserAddOutlined />}
+                        onClick={() => handleUserClick(null)} // Clear selected user when clicking "New Chat"
+                        className={styles.newChatButton}
+                        style={{ background: '#660029' }}
+                    >
+                        New Chat
+                    </Button>
                 </div>
-                <div className={styles.messenger}>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <img
-                                className={styles.profilePicS}
-                                alt=""
-                                src={avtChat}
+                {/* Danh sách người nhắn */}
+                <List
+                    className={styles.messageList}
+                    dataSource={users}
+                    renderItem={(user) => (
+                        <List.Item
+                            key={user.id}
+                            onClick={() => handleUserClick(user)} // Handle click event for each user
+                            style={{ cursor: 'pointer' }}
+                            className={styles.itemContainer}
+                        >
+                            <List.Item.Meta
+                                avatar={<Avatar src={user.avatar} className={styles.avatar} />}
+                                title={<div className={styles.messageContent}>{user.name}</div>}
+                                description={<div className={styles.messageContent}>{truncateText(user.lastMessage, 35)}</div>}
                             />
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>minchonek</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Cục tác</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>Hauhomhinh</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Thứ 2</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hoang_hon</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Binh minh</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hoang_hon</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Binh minh</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hoang_011</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Hello</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hoang_011</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Hello</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hoang_011</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Hello</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hoang_011</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Hello</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hoang_011</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Hello</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hoang_011</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>Hello</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.messageProfile}>
-                        <div className={styles.profilePic}>
-                            <div className={styles.profilePic}>
-                                <img
-                                    className={styles.profilePicS}
-                                    alt=""
-                                    src={avtChat}
-                                />
-                            </div>
-                        </div>
-                        <div className={styles.profile}>
-                            <div className={styles.profileName1}>
-                                <div className={styles.nickName}>hauCutenek</div>
-                            </div>
-                            <div className={styles.time}>
-                                <div className={styles.active1hAgo}>
-                                    Ngay mai di học may gio
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.rightBorder}>
-                <div className={styles.right}>
-                    <div className={styles.content1}>
-                        <div className={styles.content2}>
-                            <div className={styles.header3}>
-                                <div className={styles.header4}>
-                                    <div className={styles.yourMessages}>Your Messages</div>
-                                </div>
-                            </div>
-                            <div className={styles.text}>
-                                <div className={styles.text1}>
-                                    <div className={styles.active1hAgo}>
-                                        Send private photos and messages to a friend or group.
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.button}>
-                                <div className={styles.button1}>
-                                    <div className={styles.sendMessageWrapper}>
-                                        <button className={styles.sendMessage}>Send Message</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </List.Item>
+                    )}
+                />
+            </Sider>
+            <Content style={{ paddingLeft: '20px' }} className={styles.right}>
+                <Conversation selectedUser={selectedUser} />
+            </Content>
+        </Layout>
     );
 };
 
-export default ChatFriend;
+export default ChatPage;
