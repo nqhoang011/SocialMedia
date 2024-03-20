@@ -20,19 +20,23 @@
 
 .image-content {
     display: flex;
-    align-items:flex-start;
-    width: 100%; 
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
     height: auto;
+    max-height: 600px; 
+    object-fit: contain;
 }
 
 .post-content {
     max-width: 100%; 
     margin-bottom: 20px;
     margin-left: 35px;
+    flex: 1; 
 }
 
 .cmt-container {
-    max-height: 100%;
+    max-height: calc(100vh - 480px); 
     overflow-y: auto;
 }
 
@@ -51,4 +55,47 @@
 
 .add-comment button {
     margin-left: 5px; 
+}
+
+.img-container {
+    position: relative;
+    margin-right: 20px;
+    width: 100%;
+    flex: 1;
+    align-self: flex-start;
+}
+
+.image-content {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+}
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.178);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.icons {
+    margin-bottom: 10px;
+    padding-right: 15px;
 }
