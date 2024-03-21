@@ -42,10 +42,9 @@ nav {
     position: absolute;
     z-index: 100;
     top: 50%;
-    left: 40px;
+    left: 45px;
     transform: translateY(-50%);
 }
-
 #n-search{
     width: 90%;
     height: 45px;
@@ -113,4 +112,11 @@ nav {
 .user-profile{
     margin-right: 50px;
 
+}
+.user-search {
+    width: 400px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }

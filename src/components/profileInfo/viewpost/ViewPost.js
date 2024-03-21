@@ -2,7 +2,6 @@ import { Avatar, Modal, Row, Col, Input, Button } from 'antd';
 import { HeartOutlined, CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './ViewPost.css';
-import { Title } from '@mui/icons-material';
 
 const Comment = ({ author, content }) => (
     <div className='cmt-border'>
@@ -14,7 +13,7 @@ const Comment = ({ author, content }) => (
     </div>
 );
 
-const ViewPost = ({ viewPost, onClose, postData, user = null }) => {
+const ViewPost = ({ onClose, postData, user = null }) => {
     // console.log(postData);
     const [newComment, setNewComment] = useState('');
     const [comments, setComments] = useState(postData.comments);
@@ -44,7 +43,6 @@ const ViewPost = ({ viewPost, onClose, postData, user = null }) => {
     return (
         <Modal
             centered
-            visible={viewPost}
             width={1200}
             footer={null}
             onCancel={() => onClose(false)}
