@@ -1,15 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../navigationBar/NavBar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { ChildFriendlyOutlined, Home, Message, MessageOutlined, MessageRounded, MessageSharp, MessageTwoTone, NotificationsOutlined, People, PeopleAltOutlined } from '@mui/icons-material';
 import IconNavBar from '../../img/logo-1.png';
-import { Avatar, Button, Card, Image, Modal } from 'antd';
+import { Avatar, Button, Card, Image, Modal, Popover } from 'antd';
 import { Dropdown } from 'antd';
+import { toast } from 'react-toastify';
+import { getResultSearchApi } from '../../utils/api';
 
 const NavBar = () => {
     const imageBackground = localStorage.getItem('image');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [textSearch, setTextSearch] = useState("");
+    const [openSearchResult, setOpenSearchResult] = useState(false);
+    const [listUsers, setListUsers] = useState([]);
+    const getListUsers = async () => {
+        try {
+            let res = await getResultSearchApi(textSearch);
+            // console.log(res.data);
+            setListUsers(res.data);
+        } catch (error) {
+            toast.error('Errors: ' + error.Message);
+        }
+    }
+    useEffect(() => {
+        getListUsers();
+    }, []);
     const showModal = () => {
         setIsModalOpen(!isModalOpen);
     }
@@ -65,6 +82,21 @@ const NavBar = () => {
             </Dropdown>
         );
     }
+    const handleSearch = (e) => {
+        setTextSearch(e.target.value);
+        getListUsers();
+    }
+    const ListUsersSearch = () => {
+        return (
+            listUsers.map((item) => (
+                <div className='user-search'>
+                    <Avatar size='large' src={<img src={item.image} />} />
+                    <div>{item.title}</div>
+                    <a>{item.name}</a>
+                </div>
+            ))
+        )
+    }
     return (
         <nav>
 
@@ -75,14 +107,23 @@ const NavBar = () => {
                 </Link>
             </div>
             <div className="n-form-button" >
-                <form className='n-form' onSubmit={(e) => e.preventDefault()} >
+                <form className='n-form' >
                     <SearchIcon className='search-icon' />
-                    <input type="text"
-                        placeholder='Search post'
-                        id='n-search'
-                    //value={search}
-                    //onChange={(e) => setSearch(e.target.value)}
-                    />
+                    <Popover placement='bottom'
+                        content={<ListUsersSearch />}
+                        title="Result"
+                        trigger="click"
+                    // open={openSearchResult}
+                    // onOpenChange={handleOpenChange}
+                    >
+                        <input type="text"
+                            placeholder='Search user'
+                            id='n-search'
+                            value={textSearch}
+                            onChange={handleSearch}
+                        />
+                    </Popover>
+
                 </form>
             </div>
 

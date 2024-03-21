@@ -33,3 +33,7 @@ export const getUserStoriesApi = () => {
 export const getFeedApi = () => {
     return axios.get(`/api/v1/posts/get-other-post?userid=${localStorage.getItem('id')}`);
 }
+
+export const getResultSearchApi = (text) => {
+    return axios.get(`/api/v1/users/looking-for?keyword=${text}`);
+}

@@ -13,7 +13,7 @@ const HomePage = () => {
     const getData = async () => {
         try {
             let res = await getFeedApi();
-            console.log(res.data);
+            // console.log(res.data);
             setFeeds(res.data);
         } catch (error) {
             toast.error("Lỗi: " + error.message);
@@ -47,7 +47,6 @@ const HomePage = () => {
 
         </div >
     );
-
 };
 
 export default HomePage;

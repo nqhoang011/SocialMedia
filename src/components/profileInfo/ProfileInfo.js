@@ -204,26 +204,25 @@ const ProfileInfo = () => {
     }, []);
 
     const ListStories = () => {
+        const [listData, setListData] = useState(listStories.map((item) => item.src_image));
         const handleCloseStory = (close) => {
             setOpenStory(close);
         }
         return (
-            listStories.map((item) => (
-                <div className={styles.story} key={item.id}>
-                    <img
-                        className={styles.avatarProfilePicIcon1}
-                        alt=""
-                        src={item.src_image}
-                        onClick={() => setOpenStory(true)}
-                    />
-                    <div className={styles.avatarName}>
-                        <div className={styles.madeUsWrapper}>
-                            <div className={styles.madeUs}>My</div>
-                        </div>
+            <div className={styles.story}>
+                <img
+                    className={styles.avatarProfilePicIcon1}
+                    alt=""
+                    src={bg1}
+                    onClick={() => setOpenStory(true)}
+                />
+                <div className={styles.avatarName}>
+                    <div className={styles.madeUsWrapper}>
+                        <div className={styles.madeUs}>Srory</div>
                     </div>
-                    {openStory && <ViewStory key={item.id} data={item} onCloseStory={handleCloseStory} />}
                 </div>
-            ))
+                <ViewStory isOpen={openStory} data={listData} onCloseStory={handleCloseStory} />
+            </div>
         )
     }
 

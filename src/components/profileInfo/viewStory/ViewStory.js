@@ -1,24 +1,24 @@
 import { Modal } from 'antd';
 import React, { useEffect, useState } from 'react';
 import Story from 'react-insta-stories';
-const ViewStory = ({ data, onCloseStory }) => {
+const ViewStory = ({ isOpen, data, onCloseStory }) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             onCloseStory(false);
-        }, 8000);
+        }, data.length * 9000);
 
         return () => clearTimeout(timeout);
     }, []);
     return (
         <Modal
-            open={true}
+            open={isOpen}
             centered
             width={450}
             footer={null}
             onCancel={() => onCloseStory(false)}
         >
             <Story
-                stories={[data.src_image]}
+                stories={data}
                 defaultInterval={8000}
             />
         </Modal>
