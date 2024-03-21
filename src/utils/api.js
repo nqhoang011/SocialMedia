@@ -6,28 +6,28 @@ export const loginApi = (email, password) => {
     })
 }
 
-export const getFollowersApi = () => {
-    return axios.get(`/api/v1/following/get-listUserIsFollowing/${localStorage.getItem('id')}`);
+export const getFollowersApi = (id) => {
+    return axios.get(`/api/v1/following/get-listUserIsFollowing/${id}`);
 }
 
-export const getFollowingsApi = () => {
-    return axios.get(`/api/v1/following/get-listUserIsFollowed/${localStorage.getItem('id')}`);
+export const getFollowingsApi = (id) => {
+    return axios.get(`/api/v1/following/get-listUserIsFollowed/${id}`);
 }
 
-export const getCountFollowersApi = () => {
-    return axios.get(`/api/v1/following/get-following/${localStorage.getItem('id')}`);
+export const getCountFollowersApi = (id) => {
+    return axios.get(`/api/v1/following/get-following/${id}`);
 }
 
-export const getCountFollowingsApi = () => {
-    return axios.get(`/api/v1/following/get-userid/${localStorage.getItem('id')}`);
+export const getCountFollowingsApi = (id) => {
+    return axios.get(`/api/v1/following/get-userid/${id}`);
 }
 
-export const getListPostsApi = () => {
-    return axios.get(`/api/v1/posts/get-all/post?userid=${localStorage.getItem('id')}`);
+export const getListPostsApi = (id) => {
+    return axios.get(`/api/v1/posts/get-all/post?userid=${id}`);
 }
 
-export const getUserStoriesApi = () => {
-    return axios.get(`/api/v1/stories/get-all?userid=${localStorage.getItem('id')}`);
+export const getUserStoriesApi = (id) => {
+    return axios.get(`/api/v1/stories/get-all?userid=${id}`);
 }
 
 export const getFeedApi = () => {
@@ -36,4 +36,8 @@ export const getFeedApi = () => {
 
 export const getResultSearchApi = (text) => {
     return axios.get(`/api/v1/users/looking-for?keyword=${text}`);
+}
+
+export const getUserProfileApi = (id) => {
+    return axios.get(`/api/v1/find/${id}`);
 }

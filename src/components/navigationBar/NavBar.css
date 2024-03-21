@@ -120,3 +120,6 @@ nav {
     flex-direction: row;
     gap: 10px;
 }
+.user-search:hover {
+    cursor: pointer;
+}

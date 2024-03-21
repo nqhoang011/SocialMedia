@@ -13,7 +13,7 @@ const Comment = ({ author, content }) => (
     </div>
 );
 
-const ViewPost = ({ onClose, postData, user = null }) => {
+const ViewPost = ({ viewPost, onClose, postData }) => {
     // console.log(postData);
     const [newComment, setNewComment] = useState('');
     const [comments, setComments] = useState(postData.comments);
@@ -42,6 +42,7 @@ const ViewPost = ({ onClose, postData, user = null }) => {
 
     return (
         <Modal
+            open={viewPost}
             centered
             width={1200}
             footer={null}

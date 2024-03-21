@@ -3,8 +3,11 @@ import '../Profile/Profile.css';
 import NavBar from '../../components/navigationBar/NavBar';
 import ProfileInfo from '../../components/profileInfo/ProfileInfo';
 import SlideBar from '../../components/slideBar/SlideBar';
+import { useParams } from 'react-router-dom';
 
 const Profile = () => {
+    const { id } = useParams();
+    // console.log(id);
     return (
         <div className='interface'>
             <NavBar />
@@ -13,7 +16,7 @@ const Profile = () => {
                     <SlideBar active={5} />
                 </div>
                 <div className='profile-border'>
-                    <ProfileInfo />
+                    <ProfileInfo key={id} dataId={id} />
                 </div>
 
             </div>

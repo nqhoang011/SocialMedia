@@ -5,13 +5,13 @@ import { getFollowingsApi } from '../../utils/api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 
-const ListFollowing = () => {
+const ListFollowing = ({ dataId }) => {
     const [data, setData] = useState([]);
     let res, len;
     const navigate = useNavigate();
     const getData = async () => {
         try {
-            res = await getFollowingsApi();
+            res = await getFollowingsApi(dataId);
             setData(res.data)
             console.log(res.data);
             len = res.data.length;

@@ -5,7 +5,7 @@ import bg1 from "../../img/bg1.jpg";
 import { AddCircle, Close, GridOnOutlined, SaveAltOutlined, VideoLibrary } from "@mui/icons-material";
 import ListFollowing from "./ListFollowing";
 import ListFollowers from "./ListFollowers";
-import { getCountFollowersApi, getCountFollowingsApi, getListPosts, getListPostsApi, getUserStoriesApi } from "../../utils/api";
+import { getCountFollowersApi, getCountFollowingsApi, getListPosts, getListPostsApi, getUserProfileApi, getUserStoriesApi } from "../../utils/api";
 import { toast } from "react-toastify";
 import { DatePicker, Radio } from "antd";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -23,8 +23,11 @@ const ImageDisplay = ({ data }) => {
     return (
         <>
             <img src={data.post.images[0].image} className={styles.postImage}
-                onClick={() => setViewPost(true)} />
-            {viewPost && <ViewPost viewPost={viewPost} onClose={updateViewPost} postData={data} />}
+                onClick={() => {
+                    setViewPost(true)
+                    // console.log(viewPost)
+                }} />
+            {viewPost === true && <ViewPost key={data.post.id} viewPost={viewPost} onClose={updateViewPost} postData={data} />}
         </>
     )
 }
@@ -98,7 +101,7 @@ const EditForm = ({ open, setOpen }) => {
     );
 }
 
-const ShowFollowers = ({ openFollowers, setOpenFollowers }) => {
+const ShowFollowers = ({ openFollowers, setOpenFollowers, dataId }) => {
     return (
         <Modal className={styles.modal}
             open={openFollowers}
@@ -111,7 +114,7 @@ const ShowFollowers = ({ openFollowers, setOpenFollowers }) => {
                         className={styles.btnClose} />
                 </div>
                 <div className={styles.editForm}>
-                    <ListFollowers />
+                    <ListFollowers dataId={dataId} />
                     <div className={styles.btnSave}>
                         <Button variant="contained"
                             onClick={() => setOpenFollowers(false)}>Close</Button>
@@ -123,7 +126,7 @@ const ShowFollowers = ({ openFollowers, setOpenFollowers }) => {
 }
 
 
-const ShowFollowings = ({ openFollowings, setOpenFollowings }) => {
+const ShowFollowings = ({ openFollowings, setOpenFollowings, dataId }) => {
     return (
         <Modal className={styles.modal}
             open={openFollowings}
@@ -136,7 +139,7 @@ const ShowFollowings = ({ openFollowings, setOpenFollowings }) => {
                         className={styles.btnClose} />
                 </div>
                 <div className={styles.editForm}>
-                    <ListFollowing />
+                    <ListFollowing dataId={dataId} />
                     <div className={styles.btnSave}>
                         <Button variant="contained"
                             onClick={() => setOpenFollowings(false)}>Close</Button>
@@ -170,7 +173,8 @@ const ListReels = () => {
     )
 }
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ dataId }) => {
+    // console.log(dataId);
     const [open, setOpen] = useState(false);
     const [openFollowers, setOpenFollowers] = useState(false);
     const [openFollowings, setOpenFollowings] = useState(false);
@@ -183,17 +187,22 @@ const ProfileInfo = () => {
     const [listImages, setListImages] = useState([]);
     const [openStory, setOpenStory] = useState(false);
     const [listStories, setListStories] = useState([]);
+    const [info, setInfo] = useState(null);
     const getData = async () => {
         try {
-            let res = await getCountFollowersApi();
+            let res = await getCountFollowersApi(dataId);
             setCntFollowers(res.data.length);
-            res = await getCountFollowingsApi();
+            res = await getCountFollowingsApi(dataId);
             setCntFollowings(res.data.length);
-            res = await getListPostsApi();
+            res = await getListPostsApi(dataId);
+            // console.log(res.data);
             setListImages(res.data);
-            res = await getUserStoriesApi();
+            res = await getUserStoriesApi(dataId);
             // console.log(res.data);
             setListStories(res.data);
+            res = await getUserProfileApi(dataId);
+            setInfo(res.data);
+
         }
         catch (error) {
             toast.error('Lỗi: ' + error.messase);
@@ -209,6 +218,7 @@ const ProfileInfo = () => {
             setOpenStory(close);
         }
         return (
+            listStories.length > 0 &&
             <div className={styles.story}>
                 <img
                     className={styles.avatarProfilePicIcon1}
@@ -230,7 +240,7 @@ const ProfileInfo = () => {
         <div className={styles.userProfilebody}>
             <div className={styles.header}>
                 <div className={styles.profilePic}>
-                    <Avatar src={image}
+                    <Avatar src={info === null ? image : info.image}
                         sx={{
                             width: "150px",
                             height: "150px"
@@ -238,14 +248,22 @@ const ProfileInfo = () => {
                 </div>
                 <div className={styles.desc}>
                     <div className={styles.account}>
-                        <div className={styles.nickName}>{name}</div>
-                        <button
-                            className={styles.editProfile}
-                            onClick={() => setOpen(true)}>Edit Profile</button>
-                        <EditForm
+                        <div className={styles.nickName}>{info === null ? name : info.name}</div>
+                        {dataId === localStorage.getItem('id') ?
+                            <button
+                                className={styles.editProfile}
+                                onClick={() => setOpen(true)}
+                            >Edit Profile</button>
+                            :
+                            <button
+                                className={styles.editProfile}
+                            // onClick={() => setOpen(true)}
+                            >Follow</button>
+                        }
+                        {dataId === localStorage.getItem('id') && <EditForm
                             open={open}
                             setOpen={setOpen}
-                        />
+                        />}
                     </div>
                     <div className={styles.tag}>
                         <a className={styles.count}>
@@ -261,7 +279,8 @@ const ProfileInfo = () => {
                             <div className={styles.posts}> followers</div>
                         </a>
                         <ShowFollowers openFollowers={openFollowers}
-                            setOpenFollowers={setOpenFollowers} />
+                            setOpenFollowers={setOpenFollowers}
+                            dataId={dataId} />
                         <a className={styles.count}
                             onClick={() => {
                                 setOpenFollowings(true);
@@ -270,7 +289,8 @@ const ProfileInfo = () => {
                             <div className={styles.posts}>following</div>
                         </a>
                         <ShowFollowings openFollowings={openFollowings}
-                            setOpenFollowings={setOpenFollowings} />
+                            setOpenFollowings={setOpenFollowings}
+                            dataId={dataId} />
 
                     </div>
                     <div className={styles.profileName1}>
