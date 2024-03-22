@@ -15,6 +15,7 @@ const NavBar = () => {
     const [textSearch, setTextSearch] = useState("");
     const [openSearchResult, setOpenSearchResult] = useState(false);
     const [listUsers, setListUsers] = useState([]);
+    const navigate = useNavigate();
     const getListUsers = async () => {
         try {
             let res = await getResultSearchApi(textSearch);
@@ -48,7 +49,6 @@ const NavBar = () => {
     }
     const [showMenu, setShowMenu] = useState(false);
     const image = localStorage.getItem('image');
-    const navigate = useNavigate()
     const handleLogout = () => {
         localStorage.clear();
         setTimeout(() => {
@@ -84,16 +84,21 @@ const NavBar = () => {
     }
     const handleSearch = (e) => {
         setTextSearch(e.target.value);
-        getListUsers();
+
     }
+    useEffect(() => {
+        getListUsers();
+    }, [textSearch]);
     const ListUsersSearch = () => {
         return (
             listUsers.map((item) => (
-                <div className='user-search'>
-                    <Avatar size='large' src={<img src={item.image} />} />
-                    <div>{item.title}</div>
-                    <a>{item.name}</a>
-                </div>
+                <Link key={item.id} to={'/profile/' + item.id}>
+                    <div className='user-search'>
+                        <Avatar size='large' src={<img src={item.image} />} />
+                        <div>{item.title}</div>
+                        <a>{'@' + item.name}</a>
+                    </div>
+                </Link>
             ))
         )
     }

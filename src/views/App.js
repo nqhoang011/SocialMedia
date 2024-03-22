@@ -3,7 +3,7 @@ import Login from '../pages/Login/Login';
 import SignUp from '../pages/Login/SignUp';
 import HomePage from '../pages/HomePage/HomePage';
 import Messenger from '../pages/Messenger/Messenger';
-import { Route, Router, Routes } from 'react-router-dom';
+import { Route, Router, Routes, useParams } from 'react-router-dom';
 import Profile from '../pages/Profile/Profile';
 import ListReels from '../pages/Reels Container/ListReels';
 
