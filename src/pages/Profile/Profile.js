@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const Profile = () => {
     const { id } = useParams();
-    // console.log(id);
+    console.log(id);
     return (
         <div className='interface'>
             <NavBar />

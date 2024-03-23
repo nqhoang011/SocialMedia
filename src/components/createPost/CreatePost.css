@@ -1,5 +1,5 @@
 .form-border {
-    height: 220px;
+    min-height: 120px;
     width: 700px;
     margin: 20px auto 30px;
     padding: 5px 30px 30px 30px;
@@ -41,16 +41,19 @@
 .file-upload {
     min-width: 100%;
     display: flex; 
-    justify-content: space-between;
-    align-items: center;
+    justify-content:flex-start;
+    align-items: flex-start;
     margin-top: 30px;
-    gap: 30px;
+    gap: 40px;
     flex-wrap: wrap;
 }
 .file-upload .file-icons {
     display: flex;
-    gap: 70px;
-    flex: 1.5;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 60px;
+    /* flex: 1.5; */
+    margin-left: 0px;
 }
 .file-upload button{
     padding: 10px 45px;
@@ -61,14 +64,42 @@
     font-size: 20px;
     cursor: pointer;
 }
-.pv-upload{
+.pv-upload, .pv-upload2, .pv-upload3{
     display: flex;
-    justify-content: start;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     cursor: pointer;
     color: white;
 }
+.pv-upload2, .pv-upload3 {
+    position: relative;
+}
+.pv-upload2 {
+    display: flex;
+    flex-direction: row;
+}
 .photo-dis{
     font-weight: 500;
+    font-size: 17px;
     padding: 0px 4px;
 }
+.upload-list-inline {
+    float: left;
+  /* width: 200px; */
+  margin-inline-end: 8px;
+}
+
+.custom-upload > div {
+    margin-bottom: 50px; 
+}
+.input-svg {
+    width: 80%;
+
+}
+
+.uploaded-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+

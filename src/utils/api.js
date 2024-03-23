@@ -41,3 +41,51 @@ export const getResultSearchApi = (text) => {
 export const getUserProfileApi = (id) => {
     return axios.get(`/api/v1/find/${id}`);
 }
+
+export const createPostApi = (
+    userId,
+    content,
+    images,
+    status = 'Public',
+    type = "POST",
+    createdAt,
+    modifiedAt = null,
+    location = null
+) => {
+    // console.log(images);
+    return axios.post('/api/v1/posts/create', {
+        userid: userId,
+        content: content,
+        status: 'Public',
+        src: null,
+        createdAt: createdAt,
+        modifiedAt: modifiedAt,
+        images: images,
+        type: type,
+        location: location
+    })
+}
+export const createVideoApi = (
+    userId,
+    content,
+    images = null,
+    status = 'Public',
+    src,
+    type = "SHORTCUT",
+    createdAt,
+    modifiedAt = null,
+    location = null
+) => {
+    // console.log(images);
+    return axios.post('/api/v1/posts/create', {
+        userid: userId,
+        content: content,
+        status: 'Public',
+        src: src,
+        createdAt: createdAt,
+        modifiedAt: modifiedAt,
+        images: null,
+        type: type,
+        location: location
+    })
+}
