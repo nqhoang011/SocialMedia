@@ -2,7 +2,7 @@ import React from 'react';
 import { Avatar, Input, Button } from 'antd';
 import styles from './Conversation.module.css';
 
-const Conversation = ({ selectedUser }) => {
+const Conversation = ({ selectedUser, messages }) => {
     return (
         <div className={styles.conversationContainer}>
             {selectedUser && (
@@ -17,10 +17,13 @@ const Conversation = ({ selectedUser }) => {
                     </div>
                     {/* Phần cuộc trò chuyện */}
                     <div>
-                        <div className={styles.messageContainer}>
-                            <div className={styles.message}>Mai nhớ lên trường </div>
-                            <div className={styles.senderMessage}>Biết rồi nói quài</div>
-                        </div>
+                        {messages
+                            .filter(message => message.sender === selectedUser.name)
+                            .map(message => (
+                                <div key={message.id} className={styles.messageContainer}>
+                                    <div className={styles.message}>{message.lastMessage}</div>
+                                </div>
+                            ))}
                         <div className={styles.messageInput}>
                             <Input placeholder="Texting..." />
                             <Button type="primary" style={{ background: '#660029' }} className={styles.sendButton}>Send</Button>
