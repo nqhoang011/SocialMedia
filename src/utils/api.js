@@ -89,3 +89,13 @@ export const createVideoApi = (
         location: location
     })
 }
+
+export const likePostApi = (
+    userId,
+    postId
+) => {
+    return axios.post('/api/v1/favorites/add', {
+        userid: userId,
+        postid: postId
+    })
+}

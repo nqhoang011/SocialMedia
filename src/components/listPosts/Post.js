@@ -3,16 +3,20 @@ import React, { useState } from "react";
 import styles from "./Post.module.css";
 import { ChatBubbleOutline, FavoriteBorderOutlined, InsertEmoticonOutlined, MoreHoriz, SendOutlined } from '@mui/icons-material';
 import ViewPost from "../profileInfo/viewpost/ViewPost";
-import { HeartOutlined, CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
+import { HeartOutlined, HeartFilled, CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
 import { Button } from "antd";
 
 const Post = ({ data }) => {
     const [viewPost, setViewPost] = useState(false);
+    const [liked, setLiked] = useState(false);
     const handleViewPost = () => {
         setViewPost(true);
     }
     const handleClosePost = (close) => {
         setViewPost(close);
+    }
+    const handleLikePost = () => {
+        setLiked(true);
     }
     return (
         <div className={styles.post}>
@@ -56,10 +60,19 @@ const Post = ({ data }) => {
                     <div className={styles.iconLeft}>
                         <div>
                             <Button type='text'
-                                icon={<HeartOutlined style={{
-                                    color: '#ffffff',
-                                    fontSize: '20px'
-                                }} />} />
+                                icon={
+                                    liked === false ?
+                                        <HeartOutlined style={{
+                                            color: '#ffffff',
+                                            fontSize: '20px'
+                                        }} />
+                                        :
+                                        <HeartFilled style={{
+                                            color: '#ffffff',
+                                            fontSize: '20px'
+                                        }} />
+                                }
+                                onClick={() => setLiked(!liked)} />
                             <a>{data.favorites.length}</a>
                         </div>
 

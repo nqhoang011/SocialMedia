@@ -53,18 +53,21 @@ const EditForm = ({ open, setOpen }) => {
                         className={styles.btnClose} />
                 </div>
                 <form className={styles.editForm}>
+                    <h3>Email:</h3>
                     <input
                         className={styles.formInput}
                         type="text"
                         value={localStorage.getItem('email')}
                         placeholder="Enter Your Email Address"
                         required />
+                    <h3>Your title</h3>
                     <input
                         className={styles.formInput}
                         type="text"
                         value={localStorage.getItem('title')}
                         placeholder="Enter Your Name"
                         required />
+                    <h3>Your Name</h3>
                     <input
                         className={styles.formInput}
                         type="text"
@@ -299,19 +302,21 @@ const ProfileInfo = ({ dataId }) => {
                 </div>
             </div>
             <div className={styles.storys}>
-                <div className={styles.story}>
-                    <AddCircle
-                        className={styles.avatarProfilePicIcon}
-                        sx={{
-                            width: "77px",
-                            height: "77px"
-                        }} />
-                    <div className={styles.avatarName}>
-                        <div className={styles.madeUsWrapper}>
-                            <div className={styles.madeUs}>New</div>
+                {dataId === localStorage.getItem('id') &&
+                    <div className={styles.story}>
+                        <AddCircle
+                            className={styles.avatarProfilePicIcon}
+                            sx={{
+                                width: "77px",
+                                height: "77px"
+                            }} />
+                        <div className={styles.avatarName}>
+                            <div className={styles.madeUsWrapper}>
+                                <div className={styles.madeUs}>New</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
                 <ListStories />
             </div>
             <div className={styles.toogle}>
