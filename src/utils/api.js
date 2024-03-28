@@ -30,8 +30,8 @@ export const getUserStoriesApi = (id) => {
     return axios.get(`/api/v1/stories/get-all?userid=${id}`);
 }
 
-export const getFeedApi = () => {
-    return axios.get(`/api/v1/posts/get-other-post?userid=${localStorage.getItem('id')}`);
+export const getFeedApi = (id) => {
+    return axios.get(`/api/v1/posts/get-other-post?userid=${id}`);
 }
 
 export const getResultSearchApi = (text) => {
@@ -98,4 +98,39 @@ export const likePostApi = (
         userid: userId,
         postid: postId
     })
+}
+
+export const dislikePostApi = (
+    userId,
+    postId
+) => {
+    return axios.delete(`/api/v1/favorites/delete?userid=${userId}&postid=${postId}`);
+}
+
+export const getSuggestFollowApi = () => {
+    return axios.get(`/api/v1/users/hint-user?userid=${localStorage.getItem('id')}`);
+}
+
+export const followApi = (userid) => {
+    return axios.post('/api/v1/following/add', {
+        userid: localStorage.getItem('id'),
+        followid: userid
+    });
+}
+
+export const unfollowApi = (userid) => {
+    return axios.delete(`/api/v1/unFollow/${localStorage.getItem('id')}/${userid}`);
+}
+
+export const getListReelsApi = () => {
+    return axios.get(`/api/v1/posts/reels?userid=${localStorage.getItem('id')}`);
+}
+
+export const registerApi = (userName, email, password) => {
+    // console.log(userName);
+    return axios.post('/api/v1/auth/register', {
+        name: userName,
+        email: email,
+        password: password
+    });
 }

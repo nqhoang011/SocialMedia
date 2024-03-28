@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { loginApi } from "../../utils/api";
 import { isLogin } from "../../store/action";
 import 'react-toastify/dist/ReactToastify.css';
+import { connectWS } from "../../connectWS";
 const Login = () => {
     const [data, setData] = useState({
         email: undefined,
@@ -18,7 +19,7 @@ const Login = () => {
     const handleLogin = async () => {
         try {
             let res = await loginApi(data.email, data.password);
-            console.log(res);
+            // console.log(res);
             if (res.data !== '') {
                 toast.success('Thành Công')
                 // console.log(res.data)
@@ -34,10 +35,10 @@ const Login = () => {
                 localStorage.setItem('roleName', res.data.role.name)
                 localStorage.setItem('roleCode', res.data.role.code)
                 localStorage.setItem('dob', res.data.dob)
+                await connectWS(res.data.email);
                 setTimeout(() => {
                     navigate('/home')
                 }, 2000)
-
             }
             else {
                 toast.warning('Đăng nhập thất bại, sai email hoặc mật khẩu')
@@ -46,6 +47,7 @@ const Login = () => {
         }
         catch (error) {
             toast.error('Lỗi: ' + error);
+            // console.log(error);
         }
     }
 

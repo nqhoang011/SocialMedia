@@ -52,11 +52,11 @@
 
 .icon {
   z-index: 10;
-  height: 250px;
+  height: 200px;
   color: white;
 display: flex;
 flex-direction: column;
-justify-content: space-around;
+justify-content: space-around
 }
 
 .audioBar {
@@ -133,15 +133,41 @@ bottom: 0 ;
 
 .reels {
   text-align: left;
-  color     : white;
+  color: white;
   width: 353.6px;
-  height: 625.7px;
+  max-height: inherit;
   border-radius: 20px;
   position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
 }
 .reelsContainer{
-margin: 20px auto;
-  width: 500px;
-  height: 625.7px ;
+  /* margin: 20px auto;
+  width: 100%;  
+  height: fit-content;
   position: relative;
+  scroll-snap-align: start;*/
+  
+  width: 100%;
+  height: fit-content;
+  padding-right: 32px;
+  justify-content: center;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  display: flex;
+  padding-left: 32px;
+  align-items: stretch;
+  scroll-snap-align: start;
+  margin-bottom: 30px;
+  /* display: flex;
+  align-items: center; */
+}
+
+.videoContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: auto;
+  left: auto;
 }

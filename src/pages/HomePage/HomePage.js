@@ -7,12 +7,11 @@ import '../HomePage/HomePage.css';
 import Following from '../../components/followingList/Following';
 import { getFeedApi } from '../../utils/api';
 import { toast } from 'react-toastify';
-
 const HomePage = () => {
     const [feeds, setFeeds] = useState([]);
     const getData = async () => {
         try {
-            let res = await getFeedApi();
+            let res = await getFeedApi(localStorage.getItem('id'));
             // console.log(res.data);
             setFeeds(res.data);
         } catch (error) {

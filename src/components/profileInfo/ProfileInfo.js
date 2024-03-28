@@ -5,7 +5,7 @@ import bg1 from "../../img/bg1.jpg";
 import { AddCircle, Close, GridOnOutlined, SaveAltOutlined, VideoLibrary } from "@mui/icons-material";
 import ListFollowing from "./ListFollowing";
 import ListFollowers from "./ListFollowers";
-import { getCountFollowersApi, getCountFollowingsApi, getListPosts, getListPostsApi, getUserProfileApi, getUserStoriesApi } from "../../utils/api";
+import { getCountFollowersApi, getCountFollowingsApi, getFollowersApi, getListPosts, getListPostsApi, getUserProfileApi, getUserStoriesApi } from "../../utils/api";
 import { toast } from "react-toastify";
 import { DatePicker, Radio } from "antd";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -33,14 +33,20 @@ const ImageDisplay = ({ data }) => {
 }
 
 const EditForm = ({ open, setOpen }) => {
-    const [genderValue, setGenderValue] = useState(localStorage.getItem('gender'));
+    const [genderValue, setGenderValue] = useState(localStorage.getItem('gender') === true ? true : false);
+    const [email, setEmail] = useState(localStorage.getItem('email'));
+    const [dob, setDob] = useState(localStorage.getItem('dob'));
+    const [title, setTitle] = useState(localStorage.getItem('title'));
+    const [name, setName] = useState(localStorage.getItem('name'));
+    // console.log(localStorage.getItem('gender'));
     const onChange = (e) => {
         // console.log('radio checked', e.target.value);
         setGenderValue(e.target.value);
     };
-
     const dateFormat = 'YYYY-MM-DD';
-
+    // useEffect(() => {
+    //     setGenderValue(localStorage.getItem('gender'));
+    // }, [genderValue]);
     return (
         <Modal className={styles.modal}
             open={open}
@@ -57,28 +63,31 @@ const EditForm = ({ open, setOpen }) => {
                     <input
                         className={styles.formInput}
                         type="text"
-                        value={localStorage.getItem('email')}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter Your Email Address"
                         required />
-                    <h3>Your title</h3>
+                    <h3>Your title:</h3>
                     <input
                         className={styles.formInput}
                         type="text"
-                        value={localStorage.getItem('title')}
+                        value={title}
                         placeholder="Enter Your Name"
+                        onChange={(e) => setTitle(e.target.value)}
                         required />
-                    <h3>Your Name</h3>
+                    <h3>Your Name:</h3>
                     <input
                         className={styles.formInput}
                         type="text"
-                        value={localStorage.getItem('name')}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         placeholder="Enter Username"
                         required />
                     <div className={styles.gender}>
                         <h3>Gender</h3>
                         <Radio.Group size="large"
-                            onChange={onChange}
-                            value={genderValue === true ? true : false}
+                            onChange={(e) => setGenderValue(e.target.value)}
+                            value={genderValue}
                         >
                             <Radio value={true}>Male</Radio>
                             <Radio value={false}>Female</Radio>
@@ -96,6 +105,7 @@ const EditForm = ({ open, setOpen }) => {
                     </div>
                     <div className={styles.btnSave}>
                         <Button variant="contained"
+                            type="submit"
                             onClick={() => setOpen(false)}>Save</Button>
                     </div>
                 </form>
@@ -191,6 +201,7 @@ const ProfileInfo = ({ dataId }) => {
     const [openStory, setOpenStory] = useState(false);
     const [listStories, setListStories] = useState([]);
     const [info, setInfo] = useState(null);
+    const [followed, setFollowed] = useState(false);
     const getData = async () => {
         try {
             let res = await getCountFollowersApi(dataId);
@@ -201,11 +212,18 @@ const ProfileInfo = ({ dataId }) => {
             // console.log(res.data);
             setListImages(res.data);
             res = await getUserStoriesApi(dataId);
-            // console.log(res.data);
             setListStories(res.data);
             res = await getUserProfileApi(dataId);
             setInfo(res.data);
-
+            // console.log(res.data);
+            res = await getFollowersApi(dataId);
+            let check = res.data.find((item) => item.id === localStorage.getItem('id'));
+            if (check === undefined) {
+                setFollowed(false);
+            }
+            else {
+                setFollowed(true);
+            }
         }
         catch (error) {
             toast.error('Lỗi: ' + error.messase);
@@ -258,10 +276,16 @@ const ProfileInfo = ({ dataId }) => {
                                 onClick={() => setOpen(true)}
                             >Edit Profile</button>
                             :
-                            <button
-                                className={styles.editProfile}
-                            // onClick={() => setOpen(true)}
-                            >Follow</button>
+                            followed === false ?
+                                <button
+                                    className={styles.editProfile}
+                                // onClick={() => setOpen(true)}
+                                >Follow</button>
+                                :
+                                <button
+                                    className={styles.editProfile}
+                                // onClick={() => setOpen(true)}
+                                >Unfollow</button>
                         }
                         {dataId === localStorage.getItem('id') && <EditForm
                             open={open}
@@ -297,7 +321,7 @@ const ProfileInfo = ({ dataId }) => {
 
                     </div>
                     <div className={styles.profileName1}>
-                        <div className={styles.viewer}>{title}</div>
+                        <div className={styles.viewer}>{info === null ? title : info.title}</div>
                     </div>
                 </div>
             </div>

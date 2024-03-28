@@ -241,7 +241,7 @@
   align-items: center;
 }
 .formBorder, .formBorder2 {
-  width: 500px;
+  width: 600px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -250,7 +250,7 @@
   border-radius: 20px;
 }
 .formBorder {
-  height: 420px;
+  height: 480px;
 }
 .formBorder2 {
   height: 700px;

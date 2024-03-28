@@ -13,7 +13,9 @@ const Profile = () => {
             <NavBar />
             <div className='profile'>
                 <div>
-                    <SlideBar active={5} />
+                    <SlideBar active={
+                        id === localStorage.getItem('id') ? 5 : -1
+                    } />
                 </div>
                 <div className='profile-border'>
                     <ProfileInfo key={id} dataId={id} />

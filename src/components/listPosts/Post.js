@@ -1,23 +1,49 @@
 import Profile from "../../img/bg1.jpg";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Post.module.css";
 import { ChatBubbleOutline, FavoriteBorderOutlined, InsertEmoticonOutlined, MoreHoriz, SendOutlined } from '@mui/icons-material';
 import ViewPost from "../profileInfo/viewpost/ViewPost";
 import { HeartOutlined, HeartFilled, CommentOutlined, ShareAltOutlined } from '@ant-design/icons';
 import { Button } from "antd";
+import { dislikePostApi, likePostApi } from "../../utils/api";
+import { toast } from "react-toastify";
+import { handleDislikePost, handleLikePost } from "../../utils/func";
 
 const Post = ({ data }) => {
     const [viewPost, setViewPost] = useState(false);
     const [liked, setLiked] = useState(false);
+    const [cntLiked, setCntLiked] = useState(data.favorites.length);
     const handleViewPost = () => {
         setViewPost(true);
     }
     const handleClosePost = (close) => {
         setViewPost(close);
     }
-    const handleLikePost = () => {
-        setLiked(true);
+    const handleLike = () => {
+        if (handleLikePost(data.post.id)) {
+            setLiked(true);
+            setCntLiked(cntLiked + 1);
+        }
     }
+    const handleDislike = () => {
+        if (handleDislikePost(data.post.id)) {
+            setLiked(false);
+            setCntLiked(cntLiked - 1);
+        }
+    }
+    const checkLiked = () => {
+        const lst = data.favorites.find((item) => item.userid === localStorage.getItem('id'));
+        // console.log(lst);
+        if (lst !== undefined) {
+            setLiked(true);
+        }
+        else {
+            setLiked(false);
+        }
+    }
+    useEffect(() => {
+        checkLiked();
+    }, []);
     return (
         <div className={styles.post}>
             <div className={styles.header}>
@@ -65,15 +91,17 @@ const Post = ({ data }) => {
                                         <HeartOutlined style={{
                                             color: '#ffffff',
                                             fontSize: '20px'
-                                        }} />
+                                        }}
+                                            onClick={handleLike} />
                                         :
                                         <HeartFilled style={{
                                             color: '#ffffff',
                                             fontSize: '20px'
-                                        }} />
+                                        }}
+                                            onClick={handleDislike} />
                                 }
                                 onClick={() => setLiked(!liked)} />
-                            <a>{data.favorites.length}</a>
+                            <a>{cntLiked}</a>
                         </div>
 
                         <Button type='text'
@@ -96,9 +124,9 @@ const Post = ({ data }) => {
                 </div>
 
                 <div className={styles.addcomment}>
-                    <div className={styles.border2}>
+                    {/* <div className={styles.border2}>
                         <div className={styles.border3} />
-                    </div>
+                    </div> */}
                     <div className={styles.addcomment1}>
                         <div className={styles.iconParent}>
                             <div className={styles.icon2}>
@@ -114,9 +142,9 @@ const Post = ({ data }) => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.border4}>
+                    {/* <div className={styles.border4}>
                         <div className={styles.border3} />
-                    </div>
+                    </div> */}
                 </div>
                 {/* <div className={styles.border6}>
                     <div className={styles.border1} />

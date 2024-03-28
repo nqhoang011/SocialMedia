@@ -21,7 +21,7 @@ const ListFollowers = ({ dataId }) => {
     }
     useEffect(() => {
         getData();
-        console.log(data.length)
+        // console.log(data.length)
     }, []);
     return (
         <div

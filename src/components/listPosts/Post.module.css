@@ -89,16 +89,6 @@
   overflow: hidden;
   flex-shrink: 0;
 }
-.border1 {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: var(--border-color);
-}
 .border {
   top: 0;
   width: 1px;
@@ -214,8 +204,6 @@ width: 100%;
 right: 0;
 bottom: 0;
 }
-.border2,
-.border3,
 .icon2 {
 position: absolute;
 top: 0;
@@ -296,9 +284,7 @@ align-items: flex-start;
 justify-content: flex-start;
 box-sizing: border-box;
 }
-.addcomment,
-.border4,
-.border6 {
+.addcomment {
 position: absolute;
 top: 53px;
 left: 0;
