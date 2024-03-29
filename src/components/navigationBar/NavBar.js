@@ -8,9 +8,10 @@ import { Avatar, Button, Card, Image, Modal, Popover } from 'antd';
 import { Dropdown } from 'antd';
 import { toast } from 'react-toastify';
 import { getResultSearchApi } from '../../utils/api';
+import defaultBG from '../../img/defaultBG.jpg';
 
 const NavBar = () => {
-    const imageBackground = localStorage.getItem('image');
+    let imageBackground = localStorage.getItem('image');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [textSearch, setTextSearch] = useState("");
     const [openSearchResult, setOpenSearchResult] = useState(false);
@@ -27,6 +28,7 @@ const NavBar = () => {
     }
     useEffect(() => {
         getListUsers();
+        imageBackground = localStorage.getItem('image');
     }, []);
     const showModal = () => {
         setIsModalOpen(!isModalOpen);
@@ -48,7 +50,7 @@ const NavBar = () => {
         )
     }
     const [showMenu, setShowMenu] = useState(false);
-    const image = localStorage.getItem('image');
+    // const image = imageBackground === null ? defaultBG : imageBackground;
     const handleLogout = () => {
         localStorage.clear();
         setTimeout(() => {
@@ -77,7 +79,7 @@ const NavBar = () => {
                 trigger={['click']}
             >
                 <a onClick={(e) => e.preventDefault()}>
-                    <img className='profile-image' src={image} />
+                    <img className='profile-image' src={imageBackground === 'null' ? defaultBG : imageBackground} />
                 </a>
             </Dropdown>
         );

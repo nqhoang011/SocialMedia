@@ -127,10 +127,28 @@ export const getListReelsApi = () => {
 }
 
 export const registerApi = (userName, email, password) => {
-    // console.log(userName);
+    console.log(userName);
     return axios.post('/api/v1/auth/register', {
         name: userName,
         email: email,
         password: password
     });
+}
+
+export const UpdateProfileApi = (
+    name,
+    email,
+    title,
+    gender,
+    dob,
+    image
+) => {
+    return axios.put('/api/v1/update/user', {
+        name: name,
+        email: email,
+        title: title,
+        gender: gender,
+        dob: dob,
+        image: image
+    })
 }

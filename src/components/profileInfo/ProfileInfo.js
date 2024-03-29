@@ -5,13 +5,14 @@ import bg1 from "../../img/bg1.jpg";
 import { AddCircle, Close, GridOnOutlined, SaveAltOutlined, VideoLibrary } from "@mui/icons-material";
 import ListFollowing from "./ListFollowing";
 import ListFollowers from "./ListFollowers";
-import { getCountFollowersApi, getCountFollowingsApi, getFollowersApi, getListPosts, getListPostsApi, getUserProfileApi, getUserStoriesApi } from "../../utils/api";
-import { toast } from "react-toastify";
+import { UpdateProfileApi, getCountFollowersApi, getCountFollowingsApi, getFollowersApi, getListPosts, getListPostsApi, getUserProfileApi, getUserStoriesApi } from "../../utils/api";
+import { ToastContainer, toast } from "react-toastify";
 import { DatePicker, Radio } from "antd";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import dayjs from 'dayjs';
 import ViewPost from "./viewpost/ViewPost";
 import ViewStory from "./viewStory/ViewStory";
+import 'react-toastify/dist/ReactToastify.css';
 dayjs.extend(customParseFormat);
 
 const ImageDisplay = ({ data }) => {
@@ -33,20 +34,44 @@ const ImageDisplay = ({ data }) => {
 }
 
 const EditForm = ({ open, setOpen }) => {
-    const [genderValue, setGenderValue] = useState(localStorage.getItem('gender') === true ? true : false);
+    const [genderValue, setGenderValue] = useState(localStorage.getItem('gender'));
     const [email, setEmail] = useState(localStorage.getItem('email'));
     const [dob, setDob] = useState(localStorage.getItem('dob'));
     const [title, setTitle] = useState(localStorage.getItem('title'));
     const [name, setName] = useState(localStorage.getItem('name'));
     // console.log(localStorage.getItem('gender'));
-    const onChange = (e) => {
+    const handleOnChange = (e) => {
         // console.log('radio checked', e.target.value);
         setGenderValue(e.target.value);
     };
-    const dateFormat = 'YYYY-MM-DD';
-    // useEffect(() => {
-    //     setGenderValue(localStorage.getItem('gender'));
-    // }, [genderValue]);
+    // const dateFormat = 'YYYY-MM-DD';
+    useEffect(() => {
+        // console.log(true);
+        setGenderValue(localStorage.getItem('gender'));
+        setEmail(localStorage.getItem('email'));
+        setGenderValue(localStorage.getItem('gender'));
+        setDob(localStorage.getItem('dob'));
+        setTitle(localStorage.getItem('title'));
+    }, []);
+
+    const onSaveChange = async () => {
+        let gen = genderValue === 'true' ? true : false;
+        try {
+            let res = await UpdateProfileApi(name, email, title, gen, dob, localStorage.getItem('image'));
+            if (res.status === 200) {
+                toast.success('Update profile successfully!');
+                localStorage.setItem('name', name);
+                localStorage.setItem('email', email);
+                localStorage.setItem('title', title);
+                localStorage.setItem('gender', genderValue);
+                localStorage.setItem('dob', dob);
+                setOpen(false);
+            }
+
+        } catch (error) {
+            toast.error('Update profile error:', error);
+        }
+    }
     return (
         <Modal className={styles.modal}
             open={open}
@@ -58,7 +83,7 @@ const EditForm = ({ open, setOpen }) => {
                     <Close onClick={() => setOpen(false)}
                         className={styles.btnClose} />
                 </div>
-                <form className={styles.editForm}>
+                <div className={styles.editForm}>
                     <h3>Email:</h3>
                     <input
                         className={styles.formInput}
@@ -86,11 +111,12 @@ const EditForm = ({ open, setOpen }) => {
                     <div className={styles.gender}>
                         <h3>Gender</h3>
                         <Radio.Group size="large"
-                            onChange={(e) => setGenderValue(e.target.value)}
+                            onChange={handleOnChange}
                             value={genderValue}
+                        // defaultValue={genderValue}
                         >
-                            <Radio value={true}>Male</Radio>
-                            <Radio value={false}>Female</Radio>
+                            <Radio value={'true'}>Male</Radio>
+                            <Radio value={'false'}>Female</Radio>
                         </Radio.Group>
                     </div>
                     <div className={styles.dob}>
@@ -101,14 +127,15 @@ const EditForm = ({ open, setOpen }) => {
                             maxDate={dayjs('2020-10-31', dateFormat)}
                         /> */}
                         <input type='text'
-                            value={localStorage.getItem('dob')} />
+                            value={dob}
+                            onChange={(e) => setDob(e.target.value)} />
                     </div>
                     <div className={styles.btnSave}>
                         <Button variant="contained"
-                            type="submit"
-                            onClick={() => setOpen(false)}>Save</Button>
+                            // type="submit"
+                            onClick={onSaveChange}>Save</Button>
                     </div>
-                </form>
+                </div>
             </div>
         </Modal>
     );
@@ -192,8 +219,8 @@ const ProfileInfo = ({ dataId }) => {
     const [openFollowers, setOpenFollowers] = useState(false);
     const [openFollowings, setOpenFollowings] = useState(false);
     const image = localStorage.getItem('image');
-    const name = localStorage.getItem('name');
-    const title = localStorage.getItem('title');
+    let name = localStorage.getItem('name');
+    let title = localStorage.getItem('title');
     const [cntFollowers, setCntFollowers] = useState(0);
     const [cntFollowings, setCntFollowings] = useState(0);
     const [showPosts, setShowPosts] = useState(true);
@@ -231,6 +258,8 @@ const ProfileInfo = ({ dataId }) => {
     }
     useEffect(() => {
         getData();
+        name = localStorage.getItem('name');
+        title = localStorage.getItem('title');
     }, []);
 
     const ListStories = () => {
@@ -259,6 +288,7 @@ const ProfileInfo = ({ dataId }) => {
 
     return (
         <div className={styles.userProfilebody}>
+            <ToastContainer autoClose={2000}></ToastContainer>
             <div className={styles.header}>
                 <div className={styles.profilePic}>
                     <Avatar src={info === null ? image : info.image}

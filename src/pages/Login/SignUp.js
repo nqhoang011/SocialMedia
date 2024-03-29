@@ -24,18 +24,20 @@ const SignUp = () => {
         setConfirmPassword(e.target.value);
     }
     const handleSubmit = async (e) => {
+        // console.log('clicked');
+        e.preventDefault();
         if (password !== confirmPassword) {
             toast.error('Password and Confirm Password must be the same.');
-            e.preventDefault();
             return;
         }
         else {
             try {
                 let res = await registerApi(userName, email, password);
-                // console.log(res);
+                console.log(res);
                 if (res !== null) {
                     toast.success('Register successfull!');
                     setTimeout(() => {
+                        console.log('ok');
                         navigate('/');
                     }, 2000);
                 }
@@ -60,7 +62,7 @@ const SignUp = () => {
                     <div className="inputBox">
                         <input type="fullName"
                             // name="fullName"
-                            // id="fullName"
+                            id="fullName"
                             value={userName}
                             onChange={handleChangeUserName}
                             placeholder="Your Name"
@@ -69,7 +71,7 @@ const SignUp = () => {
                     <div className="inputBox">
                         <input type="email"
                             // name="email"
-                            // id="email"
+                            id="email"
                             value={email}
                             onChange={handleChangeEmail}
                             placeholder="Email"
@@ -78,7 +80,7 @@ const SignUp = () => {
                     <div className="inputBox">
                         <input type="password"
                             // name="password"
-                            // id="password"
+                            id="password"
                             value={password}
                             onChange={handleChangePassword}
                             placeholder="Password"
@@ -87,7 +89,7 @@ const SignUp = () => {
                     <div className="inputBox">
                         <input type="password"
                             // name="confirmPassword"
-                            // id="confirmPassword"
+                            id="confirmPassword"
                             value={confirmPassword}
                             onChange={handleChangeConfirm}
                             placeholder="Confirm Password"

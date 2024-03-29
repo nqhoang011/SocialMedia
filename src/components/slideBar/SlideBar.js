@@ -1,13 +1,17 @@
 import { AddBoxOutlined, HomeOutlined, MoreHorizOutlined, SearchOutlined, Settings, SettingsCellOutlined, SlowMotionVideoOutlined, Spa } from '@mui/icons-material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../slideBar/SlideBar.css';
+import defaultBG from '../../img/defaultBG.jpg';
 
 const SlideBar = ({ active = 0 }) => {
     const [btnActive, setBtnActive] = useState(active);
-    const img = localStorage.getItem('image')
-    const name = localStorage.getItem('name')
-    const title = localStorage.getItem('title')
+    let img = localStorage.getItem('image');
+    const name = localStorage.getItem('name');
+    const title = localStorage.getItem('title');
+    useEffect(() => {
+        img = localStorage.getItem('image');
+    }, [])
     return (
         <div className='slide-bar'>
             <Link to='/home' className='slidebar-buttons'>
@@ -44,7 +48,7 @@ const SlideBar = ({ active = 0 }) => {
                 <Link to={'/profile/' + localStorage.getItem('id')} className='slidebar-buttons'>
                     <div id='btn' onClick={() => setBtnActive(5)} className={btnActive === 5 ? "active" : ""}>
                         <div className='profile-info'>
-                            <img className='profile-image' src={img} />
+                            <img className='profile-image' src={img === 'null' ? defaultBG : img} />
                             <h1><b>{title}</b></h1>
                             <span>@{name}</span>
                         </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../followingList/Following.css';
 import { getSuggestFollowApi } from '../../utils/api';
 import { toast } from 'react-toastify';
+import defaultBG from '../../img/defaultBG.jpg';
 
 const FollowingSuggest = () => {
     const [listSuggest, setListSuggest] = useState([]);
@@ -29,10 +30,10 @@ const FollowingSuggest = () => {
                 {listSuggest.map((item, index) => (
                     // console.log(item);
                     // <div>hello</div>
-                    index < 3 &&
+                    index < 7 &&
                     <div className='suggest-person'>
                         <div className='info'>
-                            <img src={item.image} />
+                            <img src={item.image === null ? defaultBG : item.image} />
                             <span>{item.title}</span>
                         </div>
                         <div className='btn'>
@@ -44,7 +45,7 @@ const FollowingSuggest = () => {
 
                 }
             </div>
-            <div className='following-list'>
+            {/* <div className='following-list'>
                 <div className='define'>
                     <span><b>Following</b></span>
                 </div>
@@ -54,7 +55,7 @@ const FollowingSuggest = () => {
                         <span>Cong Hau</span>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };
